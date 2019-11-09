@@ -1,7 +1,7 @@
 ![Syndicate RPG](https://i.imgur.com/kUVO35g.png)
 
 
-Syndicate is a MMORPG gamemode for Garry's Mod. After being released commerically in 2016, it is now free to download!
+Syndicate RPG is a (RPG) gamemode for Garry's Mod. After being released commerically in 2016, it is now free to download!
 
 If you use this, I would appreciate you buying the **credit shop** addon [here](https://www.gmodstore.com/market/view/3915) - once hooked up to a donation system of your choice, your players will be able to purchase special items such as Weapon Reset Stones, ect.
 
@@ -10,13 +10,19 @@ If you don't want to do that but still want to help, please **Star** the repo.
 ## Installation
  1. Install DarkRP - this gamemode is derived from it
  2. Drag the gamemode to your gamemodes folder
- 3. Copy `/syndicate/gamemode/config/config-default.lua` to `config.lua` so your config changes are not overridden every time your configuration.
+ 3. Copy `/syndicate/gamemode/config/config-default.lua` to `config.lua` so your config changes are not overridden every time you update.
  4. Edit the settings in `config.lua` - the defaults will work too
- 5. Edit mysql.lua with your MySQL settings
+ 5. Edit /syndicate/gamemode/config/mysql.lua with your MySQL settings
+ 6. Start and join your server, type 'fadmin setroot <yourname>' into the console to make yourself admin
+ 7. Press F4, go to admin, and setup your territories, spawns and buildings
+ 8. Use the admin tools to configure power sockets, capture points and cash spawns
  6. Done!
 
 ## Support
 You can add me on Steam [here](https://steamcommunity.com/id/vrondakis) - leave a comment as to why you are adding.
+
+## Development
+View development tips here: [https://syndicate.manolis.io/doku.php?id=developer](https://syndicate.manolis.io/doku.php?id=developer) 
 
 ## Tips
 
