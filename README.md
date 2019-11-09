@@ -6,6 +6,8 @@ Syndicate RPG is a (RPG) gamemode for Garry's Mod featuring over 35,000 lines of
 
 If you use this, I would appreciate you buying the **credit shop** addon [here](https://www.gmodstore.com/market/view/3915) - once hooked up to a donation system of your choice, your players will be able to purchase special items such as Weapon/Armor Reset Stones, crafting handbooks, ect.
 
+I also recommend you to look at my other addon - [GTerminal](https://www.gmodstore.com/market/view/gterminal-advanced-darkrp-hacking-module)
+
 If you don't want to do that but still want to help, please **Star** the repo.
 
 ## Features
