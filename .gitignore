@@ -18,6 +18,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# =========================
-# Operating System Files
-# =========================
+# Non-default gamemode config
+gamemode/config.lua

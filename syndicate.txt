@@ -1,0 +1,15 @@
+"syndicate"
+{
+    "base"		"darkrp"
+    "title"  "Syndicate RPG"
+    "version"   "1.0.0"
+    "menusystem"	"1"
+
+    "author_name"   "Manolis Vrondakis"
+    "author_email"  ""
+    "author_url"    "http://manolisvrondakis.com/"
+
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}
