@@ -1,4 +1,5 @@
-# Syndicate RPG
+![Syndicate RPG](https://i.imgur.com/kUVO35g.png)
+
 
 Syndicate is a MMORPG gamemode for Garry's Mod. I released it commercially 3 years ago but didn't have much time to support it. It is over 35,000 lines of Lua code.
 
@@ -31,3 +32,11 @@ If you have fixed a bug or added a feature, please create a pull request.
 
 ## License
 See LICENSE.md
+
+## Media
+![Media 2](https://i.imgur.com/lSBa356.jpg)
+![Media 1](https://i.imgur.com/9ywdT5x.jpg)
+![Media 6](https://i.imgur.com/uSPHlm2.jpg)
+![Media 4](https://i.imgur.com/QwiQVv8.jpg)
+![Media 5](https://i.imgur.com/LR603a2.png)
+![Media 6](https://i.imgur.com/HFAIj1y.jpg)
