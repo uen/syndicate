@@ -102,7 +102,7 @@ hook.Add('HUDPaint', 'CreditsDrawPopcorn', function()
 			
 
 end)
-//{{ user_id }}
+
 local blurShown = false
 manolis.popcorn.ShowBlurspace = function()
 	if(blurShown) then return end
@@ -142,7 +142,7 @@ concommand.Add("SyndicateGamemodeInfo",function()
 
 	local title = vgui.Create('DLabel')
 	title:SetWide(450-10-10,20)
-	title:SetText("Syndicate RPG - Version {{ script_version_name }}")
+	title:SetText("Syndicate RPG - Version 3.0.0")
 	title:SetFont("manolisAffectsTitle")
 	scrollPanel:Add(title)
 
@@ -153,15 +153,11 @@ concommand.Add("SyndicateGamemodeInfo",function()
 	desc:SetAutoStretchVertical(true)
 	desc:SetFont("manolisItemCreditDescription")
 	desc:SetText([[
-		Copyright (c) 2016 by Manolis Vrondakis manolisvrondakis.com. Thanks to the testers that made this gamemode a reality. 
+		Copyright (c) 2016 by Manolis Vrondakis http://manolisvrondakis.com. Thanks to the testers that made this gamemode a reality. 
 
-		Please report bugs directly to the Trello board for this project (https://goo.gl/zjHK8Y)
+		Please report bugs to the Syndicate RPG Github.
 
-		Credits:
-			Manolis Vrondakis - Programming & icons
-			Shaun Barratt - Blueprint and bar models
-
-		This script is licensed to {{ user_id }}. Redistribution is not permitted.
+		This gamemode can be downloaded at: https://github.com/vrondakis/syndicate - Redistribution is not permitted.
 	]])
 	scrollPanel:Add(desc,15)
 end)
