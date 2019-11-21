@@ -32,7 +32,7 @@ manolis.f1.openF1Menu = function()
 
 			local sub = vgui.Create("ManolisButton", rules)
 			sub:SetPos(f1Frame:GetWide()/2-100, tabs:GetTall()-125)
-			sub:SetText("Accept rules and spawn")
+			sub:SetText(DarkRP.getPhrase("accept_rules"))
 			sub:SetSize(200,50)
 			sub:SetZPos(9)
 			sub.DoClick = function( button )
