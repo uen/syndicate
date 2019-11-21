@@ -244,7 +244,7 @@ local manolisLanguage = {
     upgrade_str = "Улучшает %ss с новыми способностями",
     s_weapon = "Оружие %s",
     craft_mat = "Материал Крафта",
-    shipment = "Разное",
+    shipment = "Товары",
 
     // Equipment
     equipment = 'Экипировка',
@@ -344,6 +344,12 @@ local manolisLanguage = {
     guide = "Гайд",
     forums = "Форумы",
     changelog = "Список изменений",
+	accept_rules = "Принять правила и появиться",
+	
+	// Quick buy
+    select_an_item = "Быстрая Покупка - Выберите предмет",
+    select_item = "Выбрать",
+    assign_quickbuy = "Кликните, чтобы назначить этот слот быстрой покупки",
 
     // Action menu
     action_menu = "Меню действий",
@@ -403,10 +409,13 @@ local manolisLanguage = {
     give_money_confirm = "Сколько вы хотите передать?",
     sell_buildings = "Продать все двери(постройки)",
     sell_buildings_confirm = "Вы уверены, что хотите продать?",
-
+    view_gamemode_info = "Показать информацию о режиме",
+    active_items = "Активные предметы",
+    no_active_items = "Нет активных предметов",
+	
     // Shop
     items = "Предметы",
-    shipments = "Разное",
+    shipments = "Товары",
     ammo = "Патроны",
     car_blueprints = "Чертежи Машины",
     purchase_car_confirm = "Вы уверены что хотите купить чертеж %s?",
