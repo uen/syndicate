@@ -346,6 +346,11 @@ local manolisLanguage = {
     changelog = "Changelog",
     accept_rules = "Accept rules and spawn",
 
+    // Quick buy
+    select_an_item = "Quick Buy - Select an item",
+    select_item = "Select",
+    assign_quickbuy = "Click to assign this quick buy slot",
+
     // Action menu
     action_menu = "Action Menu",
     character = "Character",

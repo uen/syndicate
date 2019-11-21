@@ -352,7 +352,7 @@ hook.Add('InitPostEntity', 'manolis:buyIcons', function()
 						s.DoClick = DoClick
 
 						s.icon:SetModel('')
-						s:SetTooltip("Click to assign this quick buy slot")
+						s:SetTooltip(DarkRP.getPhrase("assign_quickbuy"))
 						
 						continue
 					end
