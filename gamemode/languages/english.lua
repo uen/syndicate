@@ -344,6 +344,7 @@ local manolisLanguage = {
     guide = "Guide",
     forums = "Forums",
     changelog = "Changelog",
+    accept_rules = "Accept rules and spawn",
 
     // Action menu
     action_menu = "Action Menu",
@@ -403,6 +404,9 @@ local manolisLanguage = {
     give_money_confirm = "How much do you wish to give?",
     sell_buildings = "Sell all buildings",
     sell_buildings_confirm = "Are you sure you wish to sell all of your buildings?",
+    view_gamemode_info = "View gamemode infomation",
+    active_items = "Active items",
+    no_active_items = "No active items",
 
     // Shop
     items = "Items",

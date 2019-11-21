@@ -1,4 +1,8 @@
 if(!GM.Config) then GM.Config = {} end
+--[[
+Toggle settings.
+Set to true or false.
+]]
 
 -- voice3D - Enable/disable 3DVoice is enabled.
 GM.Config.voice3D                       = true
@@ -18,8 +22,12 @@ GM.Config.allowvehicleowning            = true
 GM.Config.allowvnocollide               = false
 -- alltalk - Enable for global chat, disable for local chat.
 GM.Config.alltalk                       = false
+-- antimultirun - Disallow people joining your server(s) twice on the same account.
+GM.Config.antimultirun                  = true
 -- autovehiclelock - Enable/Disable automatic locking of a vehicle when a player exits it.
 GM.Config.autovehiclelock               = false
+-- babygod - people spawn godded (prevent spawn killing).
+GM.Config.babygod                       = true
 -- canforcedooropen - whether players can force an unownable door open with lockpick or battering ram or w/e.
 GM.Config.canforcedooropen              = true
 -- chatsounds - sounds are played when some things are said in chat.
@@ -52,6 +60,8 @@ GM.Config.deadvoice                     = true
 GM.Config.deathpov                      = false
 -- decalcleaner - Enable/Disable clearing ever players decals.
 GM.Config.decalcleaner                  = false
+-- disallowClientsideScripts - Clientside scripts can be very useful for customizing the HUD or to aid in building. This option bans those scripts.
+GM.Config.disallowClientsideScripts     = false
 -- doorwarrants - Enable/disable Warrant requirement to enter property.
 GM.Config.doorwarrants                  = true
 -- dropmoneyondeath - Enable/disable whether people drop money on death.
@@ -92,7 +102,7 @@ GM.Config.logging                       = true
 GM.Config.lottery                       = true
 -- showname - Whether or not to display a player's name above their head in-game.
 GM.Config.showname                      = true
--- showname - Whether or not to display a player's health above their head in-game.
+-- showhealth - Whether or not to display a player's health above their head in-game.
 GM.Config.showhealth                    = true
 -- needwantedforarrest - Enable/disable Cops can only arrest wanted people.
 GM.Config.needwantedforarrest           = false
@@ -104,12 +114,16 @@ GM.Config.norespawn                     = true
 GM.Config.npcarrest                     = true
 -- ooc - Whether or not OOC tags are enabled.
 GM.Config.ooc                           = true
+-- propertytax - Enable/disable property tax.
+GM.Config.propertytax                   = false
 -- proppaying - Whether or not players should pay for spawning props.
 GM.Config.proppaying                    = false
 -- propspawning - Enable/disable props spawning. Applies to admins too.
 GM.Config.propspawning                  = true
 -- removeclassitems - Enable/disable shipments/microwaves/etc. removal when someone changes team.
 GM.Config.removeclassitems              = true
+-- removeondisconnect - Enable/disable shipments/microwaves/etc. removal when someone disconnects.
+GM.Config.removeondisconnect            = true
 -- respawninjail - Enable/disable whether people can respawn in jail when they die.
 GM.Config.respawninjail                 = true
 -- restrictallteams - Enable/disable Players can only be citizen until an admin allows them.
@@ -134,6 +148,8 @@ GM.Config.unlockdoorsonstart            = false
 GM.Config.voiceradius                   = true
 -- tax - Whether players pay taxes on their wallets.
 GM.Config.wallettax                     = false
+-- wantedrespawn - Whether players remain wanted on respawn.
+GM.Config.wantedrespawn                 = false
 -- wantedsuicide - Enable/Disable suiciding while you are wanted by the police.
 GM.Config.wantedsuicide                 = false
 -- realisticfalldamage - Enable/Disable dynamic fall damage. Setting mp_falldamage to 1 will over-ride this.
@@ -154,10 +170,12 @@ GM.Config.adminnpcs                     = 3
 GM.Config.adminsents                    = 1
 -- adminvehicles - Whether or not vehicles should be admin only. 0 = everyone, 1 = admin or higher, 2 = superadmin or higher, 3 = rcon only
 GM.Config.adminvehicles                 = 3
--- adminweapons - Who can spawn weapons: 0: admins only, 1: supadmins only, 2: no one
+-- adminweapons - Who can spawn weapons: 0: admins only, 1: supadmins only, 2: no one, 3: everyone
 GM.Config.adminweapons                  = 1
 -- arrestspeed - Sets the max arrest speed.
 GM.Config.arrestspeed                   = 120
+-- babygodtime - How long the babygod lasts.
+GM.Config.babygodtime                   = 5
 -- chatsoundsdelay - How long to wait before letting a player emit a sound from their chat again.
 -- Leave this on at least a few seconds to prevent people from spamming sounds. Set to 0 to disable.
 GM.Config.chatsoundsdelay               = 5
@@ -177,12 +195,18 @@ GM.Config.gunlabweapon                  = "weapon_p2282"
 GM.Config.jailtimer                     = 120
 -- lockdowndelay - The amount of time a mayor must wait before starting the next lockdown.
 GM.Config.lockdowndelay                 = 120
+-- maxadvertbillboards - The maximum number of /advert billboards a player can place.
+GM.Config.maxadvertbillboards           = 3
+-- maxCheques - The maximum number of cheques someone can write
+GM.Config.maxCheques                    = 5
 -- maxdoors - Sets the max amount of doors one can own.
 GM.Config.maxdoors                      = 20
 -- maxdrugs - Sets max drugs.
 GM.Config.maxdrugs                      = 2
 -- maxfoods - Sets the max food cartons per Microwave owner.
 GM.Config.maxfoods                      = 2
+-- maxfooditems - Sets the max amount of food items a player can buy from the F4 menu.
+GM.Config.maxfooditems                  = 20
 -- maxlawboards - The maximum number of law boards the mayor can place.
 GM.Config.maxlawboards                  = 2
 -- maxletters - Sets max letters.
@@ -205,7 +229,8 @@ GM.Config.normalsalary                  = 45
 GM.Config.npckillpay                    = 10
 -- paydelay - Sets how long it takes before people get salary.
 GM.Config.paydelay                      = 160
-
+-- pocketitems - Sets the amount of objects the pocket can carry.
+GM.Config.pocketitems                   = 10
 -- pricecap - The maximum price of items (using /price).
 GM.Config.pricecap                      = 500
 -- pricemin - The minimum price of items (using /price).
@@ -225,13 +250,13 @@ GM.Config.runspeedcp                    = 255
 -- searchtime - Number of seconds for which a search warrant is valid.
 GM.Config.searchtime                    = 30
 -- ShipmentSpawnTime - Antispam time between spawning shipments.
-GM.Config.ShipmentSpamTime              = .5
+GM.Config.ShipmentSpamTime              = 3
 -- shipmenttime - The number of seconds it takes for a shipment to spawn.
 GM.Config.shipmentspawntime             = 10
 -- startinghealth - the health when you spawn.
 GM.Config.startinghealth                = 100
 -- startingmoney - your wallet when you join for the first time.
-GM.Config.startingmoney                 = 50000
+GM.Config.startingmoney                 = 500
 -- vehiclecost - Sets the cost of a vehicle (To own it).
 GM.Config.vehiclecost                   = 40
 -- wallettaxmax - Maximum percentage of tax to be paid.
@@ -254,6 +279,16 @@ GM.Config.printeroverheatchance         = 22
 GM.Config.printerreward                 = 950
 
 --[[---------------------------------------------------------------------------
+Chat distance settings
+Distance is in source units (similar to inches)
+---------------------------------------------------------------------------]]
+GM.Config.talkDistance    = 250
+GM.Config.whisperDistance = 90
+GM.Config.yellDistance    = 550
+GM.Config.meDistance      = 250
+GM.Config.voiceDistance   = 550
+
+--[[---------------------------------------------------------------------------
 Other settings
 ---------------------------------------------------------------------------]]
 
@@ -270,8 +305,8 @@ GM.Config.lockdownsound = "npc/overwatch/cityvoice/f_confirmcivilstatus_1_spkr.w
 GM.Config.DarkRPSkin = "DarkRP"
 GM.Config.currency = "$"
 GM.Config.chatCommandPrefix = "/"
-GM.Config.F1MenuHelpPage = "http://wiki.darkrp.com/index.php/Main_Page"
-GM.Config.F1MenuHelpPageTitle = "Wiki page"
+GM.Config.F1MenuHelpPage = "https://wiki.darkrp.com/index.php/Main_Page"
+GM.Config.F1MenuHelpPageTitle = "DarkRP Wiki"
 
 -- Put Steam ID's and ranks in this list, and the players will have that rank when they join.
 GM.Config.DefaultPlayerGroups = {
@@ -309,6 +344,7 @@ GM.Config.DefaultWeapons = {
     "weapon_physcannon",
     "gmod_camera",
     "gmod_tool",
+    "pocket",
     "weapon_physgun",
 }
 
@@ -436,7 +472,7 @@ GM.Config.hideNonBuyable = false
 -- Hide only the items that you have the wrong job for (or for which the customCheck says no).
 -- When you set this option to true and hideNonBuyable to false, you WILL see e.g. items that are too expensive for you to buy.
 -- but you won't see gundealer shipments when you have the citizen job.
-GM.Config.hideTeamUnbuyable = false
+GM.Config.hideTeamUnbuyable = true
 
 --[[---------------------------------------------------------------------------
 AFK module
@@ -464,7 +500,13 @@ GM.Config.hitTargetCooldown = 120
 -- How long a customer has to wait to be able to buy another hit (from the moment the hit is accepted).
 GM.Config.hitCustomerCooldown = 240
 
-
+--[[---------------------------------------------------------------------------
+Hungermod module
+---------------------------------------------------------------------------]]
+-- hungerspeed <Amount> - Set the rate at which players will become hungry (2 is the default).
+GM.Config.hungerspeed = 2
+-- starverate <Amount> - How much health that is taken away every second the player is starving  (3 is the default).
+GM.Config.starverate = 3
 
 -- DO NOT EDIT ANYTHING UNDER THIS LINE!!
 GM.Config.babygod                       = false

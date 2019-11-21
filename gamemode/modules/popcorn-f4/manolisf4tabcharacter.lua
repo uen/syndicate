@@ -146,7 +146,7 @@ function PANEL:Init()
 
 	local title = vgui.Create('DLabel')
 	title:SetWide(310,20)
-	title:SetText("Active items")
+	title:SetText(DarkRP.getPhrase("active_items"))
 	title:SetFont("manolisAffectsTitle")
 	currentAffects:Add(title)
 	local x,y = title:GetPos()
@@ -179,7 +179,7 @@ function PANEL:Init()
 		end
 
 		if(str=='') then
-			str='No active items'
+			str=DarkRP.getPhrase("no_active_items")
 		end
 
 		affects:SetText(str)
@@ -231,13 +231,13 @@ function PANEL:Init()
 			end
 		},
 		{
-			name = 'Sell all buildings',
+			name = DarkRP.getPhrase('sell_buildings'),
 			DoClick = function()
 				Manolis_Query(DarkRP.getPhrase('sell_buildings_confirm'), DarkRP.getPhrase('confirm'), DarkRP.getPhrase('confirm'),function() RunConsoleCommand("say", "/unownalldoors") end, DarkRP.getPhrase('cancel'))
 			end
 		},
 		{
-			name = 'View gamemode infomation',
+			name = DarkRP.getPhrase('view_gamemode_info'),
 			DoClick = function()
 				RunConsoleCommand("SyndicateGamemodeInfo")
 				// I kindly request that you do not remove/change this 

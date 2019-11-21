@@ -115,7 +115,7 @@ function PANEL:Alternative2()
 	self.createGang.Alternate = true
 	self.createGang:SetWide(120)
 	self.createGang:SetPos(640-self.createGang:GetWide()-25, (90/2)-(self.createGang:GetTall()/2))
-	self.createGang:SetText("Create Gang")
+	self.createGang:SetText(DarkRP.getPhrase("create_gang"))
 	self:SetWide(640)
 
 	self.name:SetText("Gang Name")
