@@ -46,6 +46,15 @@ hook.Add("DarkRPPreLoadModules", "manolisUpdateDefaults", function()
     include(folderBase .."/gamemode/config/disabled_defaults.lua")
 end)
 
+function GM:CustomObjFitsMap(obj)
+    if not obj or not obj.maps then return true end
+
+    local map = string.lower(game.GetMap())
+    for _, v in pairs(obj.maps) do
+        if string.lower(v) == map then return true end
+    end
+    return false
+end
 
 DeriveGamemode("darkrp")
 

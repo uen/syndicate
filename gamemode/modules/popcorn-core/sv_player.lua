@@ -344,6 +344,18 @@ concommand.Add("GiveSyndicateWeapon",function(ply,cmd,args)
 	end
 end)
 
+concommand.Add("GiveSyndicateBlueprint", function(ply, cmd, args)
+	if(!manolis.popcorn.config.canEditServer(ply)) then return end
+	
+	local bp = manolis.popcorn.crafting.FindBlueprint(DarkRP.getPhrase(args[1]))
+	if(bp) then
+		manolis.popcorn.inventory.addItem(ply,manolis.popcorn.crafting.CreateBlueprintData(bp)) 
+		DarkRP.notify(ply,0,4,DarkRP.getPhrase('craft_success'))
+	else
+		DarkRP.notify(ply,1,4,'Item not found')
+	end
+end)
+
 concommand.Add("GiveSyndicateArmor",function(ply,cmd,args) 
 	if(!manolis.popcorn.config.canEditServer(ply)) then return end
 	local item = manolis.popcorn.items.FindArmor(DarkRP.getPhrase(args[1]))

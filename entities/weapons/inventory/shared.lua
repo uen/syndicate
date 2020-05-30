@@ -86,10 +86,10 @@ function SWEP:PrimaryAttack()
 
         ent.pickingUp = true
             
-        manolis.popcorn.inventory.getFreeSlots(ply, function(amount)
+        manolis.popcorn.inventory.getFreeSlots(self:GetOwner(), function(amount)
             if(amount<1) then
                 ent.pickingUp = false
-                DarkRP.notify(ply,1,4,'You do not have enough inventory space to pick this up')
+                DarkRP.notify(self:GetOwner(),1,4,'You do not have enough inventory space to pick this up')
                 return
             end
         
