@@ -53,7 +53,7 @@ concommand.Add("ManolisPopcornSpawnVehicle", function(ply,cmd,args)
 				spawned.SID = ply.SID
 				spawned:Fire('lock', '', 0)
 
-				hook.Call('playerBoughtVehicle', DarkRP.hooks, ply, vehicle, spawned)
+				hook.Call('playerBoughtVehicle', DarkRP.hooks, ply, spawned, 0)
 
 				if(!manolis.popcorn.garage.spawnedCars[ply]) then manolis.popcorn.garage.spawnedCars[ply] = {} end
 				manolis.popcorn.garage.spawnedCars[ply] = {ent=spawned, car=mCar}
