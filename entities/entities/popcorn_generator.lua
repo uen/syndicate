@@ -78,6 +78,15 @@ function ENT:Destruct()
 	effectdata:SetOrigin(vPoint)
 	effectdata:SetScale(.1)
 	util.Effect("Explosion", effectdata)
+	
+	for k,v in pairs(self.connected) do
+		if(IsValid(v) and v.SetHasPower) then
+			v:SetHasPower(0)
+			if(v.OnPowerDisconnect) then
+				v:OnPowerDisconnect()
+			end
+		end
+	end
 end
 
 
