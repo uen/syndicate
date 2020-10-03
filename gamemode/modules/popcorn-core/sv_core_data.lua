@@ -169,15 +169,22 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_gang_permissions` (
 	  `id` int(11) NOT NULL ]]..AUTOINCREMENT..[[,
 	  `item` varchar(255) NOT NULL,
-	  `r1` int(11) NOT NULL,
-	  `r2` int(11) NOT NULL,
-	  `r3` int(11) NOT NULL,
-	  `r4` int(11) NOT NULL,
-	  `r5` int(11) NOT NULL,
+	  `r1` int(11),
+	  `r2` int(11),
+	  `r3` int(11),
+	  `r4` int(11),
+	  `r5` int(11),
 	  `gangid` int(11) NOT NULL,
 	  PRIMARY KEY (`id`),
 	  UNIQUE KEY `item` (`item`,`gangid`)
 	);]])
+		
+	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r1 int(11);]])
+	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r2 int(11);]])
+	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r3 int(11);]])
+	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r4 int(11);]])
+	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r5 int(11);]])
+		
 
 
 
