@@ -221,6 +221,7 @@ local manolisLanguage = {
     drop_inventory = "Drop Item",
     drop_trade_fail = "You cannot drop items while trading",
     drop_armor = "You cannot drop armors",
+    drop_fail = "You cannot drop this",
     inventory_sold = "You sold your %s for %s",
     cannot_reinforce = "You cannot reinforce this item anymore",
     reinforce_success = "Reinforcement successful!",
