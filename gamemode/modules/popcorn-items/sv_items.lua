@@ -105,12 +105,12 @@ manolis.popcorn.items.GetModel = function(item)
 	return false
 end
 
-local typesToSpawnEntity = {primary=true,side=true,upgrade=true,blueprint=true,material=true}
+manolis.popcorn.items.spawnableTypes = {primary=true,side=true,upgrade=true,blueprint=true,material=true}
 manolis.popcorn.items.SpawnItem = function(ply, item, callback, pos)
 	if(!item or !item.entity) then return end
 
 	local entName = item.entity
-	if(typesToSpawnEntity[item.type]) then
+	if(manolis.popcorn.items.spawnableTypes[item.type]) then
 		entName = 'spawned_entity'
 	end
 
