@@ -154,7 +154,8 @@ View development tips here: [https://syndicate.manolis.io/doku.php?id=developer]
 ## Tips
 
  - Don't rename the gamemode to something else or you will get less players - since servers are grouped by gamemode
- - If you wish to rename the gamemode to DarkRP so it shows under DarkRP, do the following: http://i.imgur.com/VjdSdy4.png
+ - If you wish to rename the gamemode to DarkRP so it shows under DarkRP, do the following: http://i.imgur.com/VjdSdy4.png and also change "darkrp" to "darkrpx" in darkrpx.txt
+ 
  - Don't give yourself items/levels/ect, because if you do then players won't want to put time into getting things you got for nothing
 
 ## Server list
