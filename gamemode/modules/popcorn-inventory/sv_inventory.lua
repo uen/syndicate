@@ -176,6 +176,12 @@ concommand.Add("ManolisPopcornDropItem", function(ply, cmd, args)
 				DarkRP.notify(ply,1,4,DarkRP.getPhrase('drop_armor'))
 				return
 			end
+					
+			if(!manolis.popcorn.items.spawnableTypes[item.type]) then
+				ply.isCrafting = false
+				DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("drop_fail"))	
+				return
+			end
 			
 			manolis.popcorn.inventory.removeItem(ply,id,function(data)
 				local ent = manolis.popcorn.items.SpawnItem(ply, item, function(a)
