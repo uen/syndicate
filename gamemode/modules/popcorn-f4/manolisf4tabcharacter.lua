@@ -186,6 +186,15 @@ function PANEL:Init()
 	end
 
 	refreshAffects()
+	
+	hook.Add('DarkRPVarChanged', 'characterFrameRefreshCreditAffects', function(ply,var,old,new)
+		if(ply==LocalPlayer()) then
+			if(var=='creditShopActiveItems') then
+				refreshAffects()
+			end
+		end
+	end)
+
 
 
 
