@@ -26,7 +26,7 @@ manolis.popcorn.items.CreatePrinterBooster = function(boost)
 		category = 'Money Printer Accessories',
 		price = n.price,
 		level = n.level,
-		max = 12,
+		max = n.max or manolis.popcorn.config.maxBoosters or 12,
 		cmd = "popcorncooler"..n.cmd,
 		pTable = n
 	})

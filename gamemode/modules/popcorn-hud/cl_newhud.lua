@@ -765,7 +765,7 @@ local rightClickBuffer = false
 hook.Add("Think", "manolis:TP", function()
 
 
-	if(manolis.popcorn.isInContext) then
+	if(!manolis.popcorn.config.disableThirdPerson and manolis.popcorn.isInContext) then
 
 		if(input.IsMouseDown(MOUSE_RIGHT) and !rightClickBuffer) then
 			local x, y = gui.MousePos()
@@ -784,7 +784,7 @@ hook.Add("Think", "manolis:TP", function()
 end)
 
 hook.Add("CalcView", "manolis:TP:Calc", function(ply, pos, _, fov)
-	if(manolis.popcorn.thirdPersonState>0) then
+	if(!manolis.popcorn.config.disableThirdPerson and manolis.popcorn.thirdPersonState>0) then
 		local distanceFromBack = 30
 		if manolis.popcorn.thirdPersonState == 2 then distanceFromBack = 100 end
 
@@ -813,7 +813,9 @@ hook.Add("CalcView", "manolis:TP:Calc", function(ply, pos, _, fov)
 end)
  
 hook.Add("ShouldDrawLocalPlayer", "manolis:thirdPersonCheck",function(ply)
-	return (manolis.popcorn.thirdPersonState>0)
+	if(!manolis.popcorn.config.disableThirdPerson) then
+		return (manolis.popcorn.thirdPersonState>0)
+	end
 end)
 
 function GM:HUDDrawTargetID()

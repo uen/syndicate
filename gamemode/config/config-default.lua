@@ -33,6 +33,7 @@ manolis.popcorn.config.maxPlugDistance = 250 // Max distance a plug can reach
 // Printer settings
 manolis.popcorn.config.maxPrinters = 4
 manolis.popcorn.config.maxForges = 4
+manolis.popcorn.config.maxBoosters = 12 // Max printer boosters that can be bought of a type
 manolis.popcorn.config.maxAvailablePrinters = 10 // How many printers can a player have (not buy)
 manolis.popcorn.config.maxXPCollect = 1800 // Max XP collected from a printer
 manolis.popcorn.config.stolenPrinterMult = 1.6 // Multiplier for stolen printer XP
@@ -69,8 +70,11 @@ manolis.popcorn.config.SwagbagProItems = 4 // Pro swag bag max items
 manolis.popcorn.config.XPMult = 1 // XP Multiplier. 2 will make leveling twice as easy, 0.5 will make it twice as hard
 manolis.popcorn.config.propLimit = 30 // Base prop limit
 manolis.popcorn.config.maxTakedown = 9 // Max amount of takedown orbs that can be used on a single item
+manolis.popcorn.config.disableThirdPerson = false // Disable third person (c and right click to go third person)
+
 manolis.popcorn.config.donateUrl = "http://http://syndicate.manolis.io/doku.php?id=players" // Your donation URL ( https://www.gmodstore.com/scripts/view/3915/syndicate-rpg-credit-shop )
 manolis.popcorn.config.autoConnectPrinters = false // Automatically connect printers to sockets (realism)
+
 // Terrorist
 manolis.popcorn.config.bombRods = 1 // How many cores are required to set off the bomb
 manolis.popcorn.config.bombEnrichTime = fp{math.random,4,10} // How long it takes to enrich a rod 1%
