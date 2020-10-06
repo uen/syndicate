@@ -356,7 +356,7 @@ local function OwnDoor(ply)
             DarkRP.notify(ply,0,4,'You have sold the '..building.name..' building')
             for k,v in pairs(building.doors) do
                 local door = DarkRP.doorIndexToEnt(v.id)
-                if(!isValid(door) or !door:isDoor()) then continue end
+                if(!IsValid(door) or !door:isDoor()) then continue end
 
                 door:keysUnOwn(ply)
                 door:setKeysTitle(nil)
@@ -424,7 +424,7 @@ local function OwnDoor(ply)
             for k,v in pairs(building.doors) do
 
                 local door = DarkRP.doorIndexToEnt(v.id)
-                if(!isValid(door) or !door:isDoor()) then continue end
+                if(!IsValid(door) or !door:isDoor()) then continue end
                 door:keysOwn(ply)
                 hook.Call("playerBoughtDoor", GAMEMODE, ply, door)   
             end
@@ -555,7 +555,7 @@ local function AddDoorOwner(ply, args)
     if(building) then
         for k,v in pairs(building.doors) do
             local door = DarkRP.doorIndexToEnt(v.id)
-            if(!isValid(door) or !door:isDoor()) then continue end
+            if(!IsValid(door) or !door:isDoor()) then continue end
             door:addKeysAllowedToOwn(target)
             hook.Call("onAllowedToOwnAdded", nil, ply, door, target)  
         end
