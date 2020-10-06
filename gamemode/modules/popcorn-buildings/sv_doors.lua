@@ -355,10 +355,13 @@ local function OwnDoor(ply)
         if(building) then
             DarkRP.notify(ply,0,4,'You have sold the '..building.name..' building')
             for k,v in pairs(building.doors) do
-                DarkRP.doorIndexToEnt(v.id):keysUnOwn(ply)
-                DarkRP.doorIndexToEnt(v.id):setKeysTitle(nil)
+                local door = DarkRP.doorIndexToEnt(v.id)
+                if(!isValid(door) or !door:isDoor()) then continue end
 
-                hook.Call("playerKeysSold", GAMEMODE, ply, DarkRP.doorIndexToEnt(v.id), 0)   
+                door:keysUnOwn(ply)
+                door:setKeysTitle(nil)
+
+                hook.Call("playerKeysSold", GAMEMODE, ply, door, 0)   
             end
         else
             DarkRP.notify(ply,0,4,'You have sold this door')
@@ -419,8 +422,11 @@ local function OwnDoor(ply)
 
         if(building) then
             for k,v in pairs(building.doors) do
-                DarkRP.doorIndexToEnt(v.id):keysOwn(ply)
-                hook.Call("playerBoughtDoor", GAMEMODE, ply, DarkRP.doorIndexToEnt(v.id))   
+
+                local door = DarkRP.doorIndexToEnt(v.id)
+                if(!isValid(door) or !door:isDoor()) then continue end
+                door:keysOwn(ply)
+                hook.Call("playerBoughtDoor", GAMEMODE, ply, door)   
             end
 
             if not bSuppress then
@@ -548,8 +554,10 @@ local function AddDoorOwner(ply, args)
 
     if(building) then
         for k,v in pairs(building.doors) do
-            DarkRP.doorIndexToEnt(v.id):addKeysAllowedToOwn(target)
-            hook.Call("onAllowedToOwnAdded", nil, ply, DarkRP.doorIndexToEnt(v.id), target)  
+            local door = DarkRP.doorIndexToEnt(v.id)
+            if(!isValid(door) or !door:isDoor()) then continue end
+            door:addKeysAllowedToOwn(target)
+            hook.Call("onAllowedToOwnAdded", nil, ply, door, target)  
         end
     end
 
