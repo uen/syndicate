@@ -34,10 +34,12 @@ function TOOL:LeftClick(trace)
 				
 				for k,v in pairs(manolis.popcorn.buildings.buildings) do
 					if(v.id==self.firstEnt:GetBuildingID()) then
-						if(v.doors[1]) then
-							aDoor = v.doors[1]
+						for doorKey,doorValue in pairs(v.doors or {}) do
+							local door = DarkRP.doorIndexToEnt(doorValue.id)
+							if(!IsValid(door) or !door:isDoor()) then continue end
+							aDoor = doorValue
 						end
-
+						
 						building = v
 					end
 				end

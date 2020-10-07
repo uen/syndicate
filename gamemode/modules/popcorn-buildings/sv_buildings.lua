@@ -29,7 +29,7 @@ manolis.popcorn.buildings.findFreeBuilding =  function()
 	for k,v in pairs(buildings) do
 		if(!manolis.popcorn.buildings.buildingCash[v.id]) then continue end
 		for a,b in pairs(v.doors or {}) do
-			if(DarkRP.doorIndexToEnt(b.id) and !DarkRP.doorIndexToEnt(b.id):isKeysOwned()) then
+			if(DarkRP.doorIndexToEnt(b.id) and DarkRP.doorIndexToEnt(b.id):isDoor() and !DarkRP.doorIndexToEnt(b.id):isKeysOwned()) then
 				local door
 				local pos
 				
