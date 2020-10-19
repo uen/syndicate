@@ -35,9 +35,9 @@ function ENT:CreateMaterial()
 			local time = manolis.popcorn.config.forgeTime()
 			self:SetTime(time)
 			if(timer.Exists('popcorn_forge_'..self:GetCreationID())) then
-				timer.Adjust('popcorn_forge_'..self:GetCreationID(),time,1,function() self:CreateMaterial() end)
+				timer.Adjust('popcorn_forge_'..self:GetCreationID(),time,1,function() if(self and IsValid(self) and self.CreateMaterial) then self:CreateMaterial() end end)
 			else
-				timer.Create('popcorn_forge_'..self:GetCreationID(),time,1,function() self:CreateMaterial() end)
+				timer.Create('popcorn_forge_'..self:GetCreationID(),time,1,function() if(self and IsValid(self) and self.CreateMaterial) then self:CreateMaterial() end end)
 			end
 		end
 	end
@@ -63,7 +63,7 @@ end
 function ENT:OnPowered()
 		local time = manolis.popcorn.config.forgeTime()
 		self:SetTime(time)
-		timer.Simple(time, function() self:CreateMaterial() end)
+		timer.Simple(time, function() if(self and IsValid(self) and self.CreateMaterial) then self:CreateMaterial() end end)
 end
 
 ENT.BeingTaken = false
@@ -112,9 +112,9 @@ function ENT:Use(activator,caller)
 							local time = manolis.popcorn.config.forgeTime()
 							self:SetTime(time)
 							if(timer.Exists('popcorn_forge_'..self:GetCreationID())) then
-								timer.Adjust('popcorn_forge_'..self:GetCreationID(),time,1,function() self:CreateMaterial() end)
+								timer.Adjust('popcorn_forge_'..self:GetCreationID(),time,1,function() if(self and IsValid(self) and self.CreateMaterial) then self:CreateMaterial() end end)
 							else
-								timer.Create('popcorn_forge_'..self:GetCreationID(),time,1,function() self:CreateMaterial() end)
+								timer.Create('popcorn_forge_'..self:GetCreationID(),time,1,function() if(self and IsValid(self) and self.CreateMaterial) then self:CreateMaterial() end end)
 							end
 						end
 					else
