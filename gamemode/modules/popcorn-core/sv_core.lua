@@ -203,7 +203,7 @@ hook.Add('ScalePlayerDamage', 'manolis:popcorn:groupScale', function(ply,hitgrou
 	end
 
 	if(hitgroup==HITGROUP_HEAD) then
-		dmginfo:ScameDamage(1.5)
+		dmginfo:ScaleDamage(1.5)
 	end
 end)
 
