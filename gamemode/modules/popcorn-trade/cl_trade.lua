@@ -13,6 +13,7 @@ manolis.popcorn.trade.newTrade = function()
 	tradeFrame:SetVisible(true)
 	tradeFrame:SetBackgroundBlur(true)
 	tradeFrame:SetText("")
+	manolis.popcorn.inventory.open(tradeFrame)
 
 	local cancelButton = vgui.Create("ManolisButton", tradeFrame)
 	cancelButton:SetPos(0,40)
