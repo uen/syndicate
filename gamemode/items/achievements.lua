@@ -9,6 +9,15 @@ manolis.popcorn.achievements.CreateAchievement({
 })
 
 manolis.popcorn.achievements.CreateAchievement({
+	name = "The man, the myth, the legend",
+	description = "Meet @vrondakis in game",
+	aid = "vrondakis",
+	maxProgress = 1,
+	rewardMoney = 10000,
+	rewardXp = 10000
+})
+
+manolis.popcorn.achievements.CreateAchievement({
 	name = DarkRP.getPhrase("refiner_name"),
 	description = DarkRP.getPhrase("refiner_desc"),
 	aid = "refiner",
