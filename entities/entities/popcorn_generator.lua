@@ -126,13 +126,13 @@ if(SERVER) then
 						v:OnPowerDisconnect()
 					end
 
-					self.connected[k] = nil
+					self.connected[k] = false
 				end
 			end
 
 			local connections = 0
 			for a,b in pairs(self.connected) do
-				connections = connections + 1
+				if(b) then connections = connections + 1 end
 			end
 
 			self:SetAppliances(connections)
