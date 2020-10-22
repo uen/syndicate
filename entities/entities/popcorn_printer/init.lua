@@ -47,7 +47,7 @@ function ENT:Initialize()
 	if(manolis.popcorn.config.autoConnectPrinters) then 
 
 		timer.Create("printTimerConnectAutomatic"..self:EntIndex(), 3, 0, function()
-			if(!self:GetHasPower()>0) then
+			if(!(self:GetHasPower()>0)) then
 				local e = ents.FindInSphere(self:GetPos(),manolis.popcorn.config.maxPlugDistance)
 				local plug
 				for k,v in pairs(e) do
