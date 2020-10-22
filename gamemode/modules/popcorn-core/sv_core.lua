@@ -1,6 +1,7 @@
 if(!manolis) then manolis = {} end
 if(!manolis.popcorn) then manolis.popcorn = {} end
 if(!manolis.popcorn.temp) then manolis.popcorn.temp = {} end
+if(!manolis.popcorn.core) then manolis.popcorn.core = {} end
 
 
 util.AddNetworkString('ManolisPopcornInventoryFullRefresh')
@@ -123,6 +124,9 @@ local spawnPlayer = function(ply)
 	end)
 
 end
+
+
+manolis.popcorn.core.spawnPlayer = spawnPlayer
 
 hook.Add('PlayerDeath', 'manolis:popcorn:plyDeathInit', function(ply)
 	ply.ToGhost = true
