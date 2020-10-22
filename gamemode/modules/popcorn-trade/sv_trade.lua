@@ -312,7 +312,7 @@ net.Receive("ManolisPopcornDoTrade", function(len,ply)
 						table.remove(manolis.popcorn.trade.trades, kx)
 						for k,v in pairs(v.players) do
 							v.isTrading = false
-							if(isValid(v)) then v:RefreshInventory() end
+							if(IsValid(v)) then v:RefreshInventory() end
 							net.Start("ManolisPopcornStopTrade")
 							net.Send(v)
 						end
@@ -362,7 +362,7 @@ net.Receive("ManolisPopcornCancelTrade", function(len,ply)
 					for k,v in pairs(v.players) do
 						v.isTrading = false
 						DarkRP.notify(p,1,4,DarkRP.getPhrase('trade_cancel'))
-						if(isValid(p)) then p:RefreshInventory() end
+						if(IsValid(p)) then p:RefreshInventory() end
 						net.Start("ManolisPopcornStopTrade")
 						net.Send(v)
 					end
