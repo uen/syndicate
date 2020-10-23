@@ -19,10 +19,12 @@ manolis.popcorn.bank.retrieveSingleItemData = function(ply,id,callback)
 	MySQLite.query("SELECT * FROM manolis_popcorn_bank WHERE id = "..MySQLite.SQLStr(id)..' AND uid = '..MySQLite.SQLStr(ply:SteamID64()), function(data)
 		if(data) then
 			if(data[1]) then
-				if(callback) then
-					callback(data[1])
-				end
+				if(callback) then callback(data[1]) end
+			else
+				if(callback) then callback(false) end
 			end
+		else
+			if(callback) then callback(false) end
 		end
 	end)
 end
@@ -48,8 +50,12 @@ manolis.popcorn.bank.AddItemToBank = function(ply,item,slot,callback)
 							if(callback) then callback() end
 						end)
 					end)
+				else
+					if(callback) then callback(false) end
 				end
 			end)			
+		else
+			if(callback) then callback(false) end
 		end
 	end)
 end
@@ -64,8 +70,12 @@ manolis.popcorn.bank.AddItemToInventory = function(ply,item,page,slot,callback)
 							if(callback) then callback() end
 						end)
 					end)
+				else
+					if(callback) then callback(false) end
 				end
 			end)			
+		else
+			if(callback) then callback(false) end
 		end
 	end)
 end

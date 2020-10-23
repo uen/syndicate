@@ -10,8 +10,12 @@ manolis.popcorn.bank.changeItemSlot = function(ply,id,slot,callback)
 					manolis.popcorn.bank.ChangeSlotData(ply,id,slot,function(data)
 						callback()
 					end)
+				else
+					callback()
 				end
 			end)
+		else
+			callback()
 		end
 	end)
 end
