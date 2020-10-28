@@ -1,4 +1,3 @@
-
 ![Syndicate RPG](https://i.imgur.com/kUVO35g.png)
 
 
