@@ -6,7 +6,7 @@ local addingItem = false
 local cachedItems = {}
 
 local insertItem = function(ply,item,callback,page,slot)
-	MySQLite.query("INSERT INTO manolis_popcorn_inventory VALUES(null, "..MySQLite.SQLStr(ply:SteamID64())..", "..slot..", "..MySQLite.SQLStr(item.name)..","..MySQLite.SQLStr(item.entity)..","..MySQLite.SQLStr(item.value)..','..MySQLite.SQLStr(item.type)..','..MySQLite.SQLStr(item.json)..','..MySQLite.SQLStr(page)..','..MySQLite.SQLStr(item.icon)..','..MySQLite.SQLStr(item.level)..','..MySQLite.SQLStr(item.quantity)..') ON DUPLICATE KEY UPDATE slot = slot + 1', function(data)
+	MySQLite.query("INSERT INTO manolis_popcorn_inventory VALUES(null, "..MySQLite.SQLStr(ply:SteamID64())..", "..slot..", "..MySQLite.SQLStr(item.name)..","..MySQLite.SQLStr(item.entity)..","..MySQLite.SQLStr(item.value)..','..MySQLite.SQLStr(item.type)..','..MySQLite.SQLStr(item.json)..','..MySQLite.SQLStr(page)..','..MySQLite.SQLStr(item.icon)..','..MySQLite.SQLStr(item.level)..','..MySQLite.SQLStr(item.quantity)..') '..manolis.popcorn.data.duplicateUpdate("id")..' slot = slot + 1', function(data)
 		if(callback) then
 			callback({page=page,slot=slot})
 		end

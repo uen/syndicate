@@ -27,7 +27,7 @@ if(SERVER) then
 
 	function ENT:SetItemData(data)
 		self.itemInventoryData = data
-
+		data.quantity = tonumber(data.quantity)
 		local str = data.name
 		if(data.quantity>1) then
 			str = data.quantity.."x "..str.."s"

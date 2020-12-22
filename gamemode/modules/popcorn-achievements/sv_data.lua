@@ -40,8 +40,9 @@ manolis.popcorn.achievements.addProgress = function(ply, aid, progressA, callbac
 			end
 
 
-			local progress = data or 0
+			local progress = tonumber(data) or 0
 			local newProgress = progress + progressA
+
 			if(progress>a.maxProgress) then
 				MySQLite.query("UPDATE manolis_popcorn_achievements SET progress = "..newProgress.." WHERE aid = "..MySQLite.SQLStr(aid).." AND uid = "..MySQLite.SQLStr(ply:SteamID64()), function(d)
 					manolis.popcorn.achievements.sendSpecific(ply,aid,newProgress)
@@ -50,13 +51,13 @@ manolis.popcorn.achievements.addProgress = function(ply, aid, progressA, callbac
 			end
 
 			if(newProgress>=a.maxProgress) then
-				MySQLite.query("INSERT INTO manolis_popcorn_achievements VALUES(null, "..MySQLite.SQLStr(aid)..", "..MySQLite.SQLStr(newProgress)..", "..MySQLite.SQLStr(ply:SteamID64())..") ON DUPLICATE KEY UPDATE progress =  "..MySQLite.SQLStr(newProgress), function(d)
+				MySQLite.query("INSERT INTO manolis_popcorn_achievements VALUES(null, "..MySQLite.SQLStr(aid)..", "..MySQLite.SQLStr(newProgress)..", "..MySQLite.SQLStr(ply:SteamID64())..") "..manolis.popcorn.data.duplicateUpdate("id").." progress =  "..MySQLite.SQLStr(newProgress), function(d)
 					manolis.popcorn.achievements.sendWin(ply,aid,newProgress)
 				end)
 				return
 			end
 	
-			MySQLite.query("INSERT INTO manolis_popcorn_achievements VALUES(null, "..MySQLite.SQLStr(aid)..", "..MySQLite.SQLStr(newProgress)..", "..MySQLite.SQLStr(ply:SteamID64())..") ON DUPLICATE KEY UPDATE progress =  "..MySQLite.SQLStr(newProgress), function()
+			MySQLite.query("INSERT INTO manolis_popcorn_achievements VALUES(null, "..MySQLite.SQLStr(aid)..", "..MySQLite.SQLStr(newProgress)..", "..MySQLite.SQLStr(ply:SteamID64())..") "..manolis.popcorn.data.duplicateUpdate("id").." progress =  "..MySQLite.SQLStr(newProgress), function()
 				manolis.popcorn.achievements.sendSpecific(ply, aid, newProgress)
 			end)
 		end)
@@ -70,7 +71,7 @@ manolis.popcorn.achievements.addProgress = function(ply, aid, progressA, callbac
 			local progress = data or 0
 			local newProgress = progress + progressA
 	
-			MySQLite.query("INSERT INTO manolis_popcorn_achievements VALUES(null, "..MySQLite.SQLStr(aid)..", "..MySQLite.SQLStr(newProgress)..", "..MySQLite.SQLStr(ply:SteamID64())..") ON DUPLICATE KEY UPDATE progress =  "..MySQLite.SQLStr(newProgress), function()
+			MySQLite.query("INSERT INTO manolis_popcorn_achievements VALUES(null, "..MySQLite.SQLStr(aid)..", "..MySQLite.SQLStr(newProgress)..", "..MySQLite.SQLStr(ply:SteamID64())..") "..manolis.popcorn.data.duplicateUpdate("id").." progress =  "..MySQLite.SQLStr(newProgress), function()
 				manolis.popcorn.achievements.sendSpecific(ply, aid, newProgress)
 			end)
 		end)

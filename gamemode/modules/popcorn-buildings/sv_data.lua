@@ -114,7 +114,7 @@ manolis.popcorn.buildings.saveCapturePoint = function(building, pos, angles, cal
 end
 
 manolis.popcorn.buildings.saveRent = function(building, rent, callback)
-	MySQLite.query("INSERT INTO manolis_popcorn_buildings_rent VALUES("..MySQLite.SQLStr(building)..","..MySQLite.SQLStr(rent)..") ON DUPLICATE KEY UPDATE rent = "..MySQLite.SQLStr(rent), function()
+	MySQLite.query("INSERT INTO manolis_popcorn_buildings_rent VALUES("..MySQLite.SQLStr(building)..","..MySQLite.SQLStr(rent)..") "..manolis.popcorn.data.duplicateUpdate("bid").." rent = "..MySQLite.SQLStr(rent), function()
 		if(callback) then callback() end
 	end)
 end
@@ -150,7 +150,7 @@ manolis.popcorn.buildings.newBuilding = function(map, name, callback)
 end
 
 manolis.popcorn.buildings.newDoor = function(door, map, main, bid, callback)
-	MySQLite.query("INSERT INTO manolis_popcorn_buildings_doors VALUES("..MySQLite.SQLStr(door)..", "..MySQLite.SQLStr(map)..", "..MySQLite.SQLStr(main)..","..MySQLite.SQLStr(bid)..") ON DUPLICATE KEY UPDATE main ="..MySQLite.SQLStr(main).." , bid = "..MySQLite.SQLStr(bid), function(data)
+	MySQLite.query("INSERT INTO manolis_popcorn_buildings_doors VALUES("..MySQLite.SQLStr(door)..", "..MySQLite.SQLStr(map)..", "..MySQLite.SQLStr(main)..","..MySQLite.SQLStr(bid)..") "..manolis.popcorn.data.duplicateUpdate("id").." main ="..MySQLite.SQLStr(main).." , bid = "..MySQLite.SQLStr(bid), function(data)
 		if(callback) then
 			callback(data)
 		end

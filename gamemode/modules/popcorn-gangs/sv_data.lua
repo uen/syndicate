@@ -89,7 +89,7 @@ manolis.popcorn.gangs.GetGangUpgrades = function(gang, callback)
 end
 
 manolis.popcorn.gangs.SetUpgradeValue = function(gang, key, value, callback)
-	MySQLite.query("INSERT INTO manolis_popcorn_gang_upgrades(ukey, gangid, val) VALUES("..MySQLite.SQLStr(key)..","..MySQLite.SQLStr(gang)..", "..MySQLite.SQLStr(value)..") ON DUPLICATE KEY UPDATE val = "..MySQLite.SQLStr(value), function(data)
+	MySQLite.query("INSERT INTO manolis_popcorn_gang_upgrades(ukey, gangid, val) VALUES("..MySQLite.SQLStr(key)..","..MySQLite.SQLStr(gang)..", "..MySQLite.SQLStr(value)..") "..manolis.popcorn.data.duplicateUpdate("id").." UPDATE val = "..MySQLite.SQLStr(value), function(data)
 		if(callback) then
 			callback()
 		end
@@ -250,7 +250,7 @@ manolis.popcorn.gangs.SetPermission = function(gangid, item, permission, val, ca
 	local perm = permsToTable[permission]
 
 	if(perm) then
-		MySQLite.query("INSERT INTO manolis_popcorn_gang_permissions (gangid, item, "..perm..") VALUES ("..MySQLite.SQLStr(gangid)..", "..MySQLite.SQLStr(item)..", "..MySQLite.SQLStr(val)..") ON DUPLICATE KEY UPDATE "..perm.." = "..MySQLite.SQLStr(val), function()
+		MySQLite.query("INSERT INTO manolis_popcorn_gang_permissions (gangid, item, "..perm..") VALUES ("..MySQLite.SQLStr(gangid)..", "..MySQLite.SQLStr(item)..", "..MySQLite.SQLStr(val)..") "..manolis.popcorn.data.duplicateUpdate("id").." "..perm.." = "..MySQLite.SQLStr(val), function()
 			if(callback) then
 				callback()
 			end
@@ -364,13 +364,13 @@ manolis.popcorn.gangs.GetGangRivals = function(gang, callback)
 end
 
 manolis.popcorn.gangs.AddGangKill = function(attacker,victim,callback)
-	MySQLite.query("INSERT INTO manolis_popcorn_gang_kills(attacker,victim,amount) VALUES("..MySQLite.SQLStr(attacker)..", "..MySQLite.SQLStr(victim)..", 1) ON DUPLICATE KEY UPDATE amount = amount+1", function()
+	MySQLite.query("INSERT INTO manolis_popcorn_gang_kills(attacker,victim,amount) VALUES("..MySQLite.SQLStr(attacker)..", "..MySQLite.SQLStr(victim)..", 1) "..manolis.popcorn.data.duplicateUpdate("id").." amount = amount+1", function()
 		if(callback) then callback() end
 	end)
 end
 
 manolis.popcorn.gangs.AddGangStash = function(attacker,victim,callback)
-	MySQLite.query("INSERT INTO manolis_popcorn_gang_stashes(attacker,victim,amount) VALUES("..MySQLite.SQLStr(attacker)..", "..MySQLite.SQLStr(victim)..", 1) ON DUPLICATE KEY UPDATE amount = amount+1", function()
+	MySQLite.query("INSERT INTO manolis_popcorn_gang_stashes(attacker,victim,amount) VALUES("..MySQLite.SQLStr(attacker)..", "..MySQLite.SQLStr(victim)..", 1) "..manolis.popcorn.data.duplicateUpdate("id").." amount = amount+1", function()
 		if(callback) then callback() end
 	end)
 end

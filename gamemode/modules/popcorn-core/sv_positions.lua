@@ -3,10 +3,11 @@ if(!manolis.popcorn) then manolis.popcorn = {} end
 if(!manolis.popcorn.positions) then manolis.popcorn.positions = {} end
 if(!manolis.popcorn.positions.positions) then manolis.popcorn.positions.positions = {} end
 if(!manolis.popcorn.positions.positionSpawns) then manolis.popcorn.positions.positionSpawns = {} end
+
 manolis.popcorn.positions.SetPosition = function(v,pos,angles,callback)
 	local a = v
-	MySQLite.query('INSERT INTO manolis_popcorn_positions(name,map,x,y,z,ax,ay,az) VALUES('..MySQLite.SQLStr(a.name)..","..MySQLite.SQLStr(game.GetMap())..','..MySQLite.SQLStr(pos.x)..','..MySQLite.SQLStr(pos.y)..','..MySQLite.SQLStr(pos.z)..','..MySQLite.SQLStr(angles.x)..','..MySQLite.SQLStr(angles.y)..','..MySQLite.SQLStr(angles.z)..') ON DUPLICATE KEY UPDATE x='..MySQLite.SQLStr(pos.x)..', y='..MySQLite.SQLStr(pos.y)..',z='..MySQLite.SQLStr(pos.z)..',ax='..MySQLite.SQLStr(angles.x)..',ay='..MySQLite.SQLStr(angles.y)..',az='..MySQLite.SQLStr(angles.z),function() 
-		if(callback) then callback() end	
+	MySQLite.query('INSERT INTO manolis_popcorn_positions(name,map,x,y,z,ax,ay,az) VALUES('..MySQLite.SQLStr(a.name)..","..MySQLite.SQLStr(game.GetMap())..','..MySQLite.SQLStr(pos.x)..','..MySQLite.SQLStr(pos.y)..','..MySQLite.SQLStr(pos.z)..','..MySQLite.SQLStr(angles.x)..','..MySQLite.SQLStr(angles.y)..','..MySQLite.SQLStr(angles.z)..') '..manolis.popcorn.data.duplicateUpdate("id")..' x='..MySQLite.SQLStr(pos.x)..', y='..MySQLite.SQLStr(pos.y)..',z='..MySQLite.SQLStr(pos.z)..',ax='..MySQLite.SQLStr(angles.x)..',ay='..MySQLite.SQLStr(angles.y)..',az='..MySQLite.SQLStr(angles.z),function() 
+		if(callback) then callback() end
 	end)
 end
 

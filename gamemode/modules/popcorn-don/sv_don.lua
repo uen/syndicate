@@ -30,6 +30,7 @@ concommand.Add("ManolisPopcornDoDon", function(ply,cmd,args)
 				DarkRP.notify(ply,1,4,DarkRP.getPhrase('don_receives'))
 				return
 			end
+
 			manolis.popcorn.inventory.getFreeSlots(ply, function(amount)
 				if(amount<gift.slots) then
 					DarkRP.notify(ply,1,4,DarkRP.getPhrase('don_inv'))

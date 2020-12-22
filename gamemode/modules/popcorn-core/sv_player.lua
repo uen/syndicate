@@ -310,15 +310,6 @@ hook.Add("PlayerSpawnProp", "canghostSpawnBlock", function(ply)
 	end
 end)
 
-timer.Create('maniMySQLIdiotTracerv4', 2, 0, function()
-	if(MySQLite_config.EnableMySQL) then
-		timer.Remove('maniMySQLIdiotTracerv4')
-	else
-		DarkRP.notifyAll(1,4,"You must setup MySQL for this gamemode to work.")
-		DarkRP.notifyAll(1,4,"Edit /gamemode/config/mysql.lua")
-	end
-end)
-
 timer.Create('maniCheckTheyHaveIt', 15, 1, function()
 	if(manolis.popcorn.creditShop && !manolis.popcorn.creditShop.valid_) then
 		manolis.popcorn.creditShop = nil

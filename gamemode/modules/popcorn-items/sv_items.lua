@@ -85,7 +85,7 @@ end
 manolis.popcorn.items.GetModel = function(item)
 	if(item.type=='upgrade') then return "models/maxofs2d/hover_rings.mdl" end
 	if(item.type=='blueprint') then return "models/lecoffee/alchemy/blueprint.mdl" end
-	if(item.type=='material') then return "models/lecoffee/alchemy/metalbar.mdl" end
+	if(item.type=='material') then return "models/props_c17/FurnitureCouch002a.mdl" end
 	if(item.type=='shipment') then return "models/Items/item_item_crate.mdl" end
 	if(item.json and item.json.model) then return item.json.model end
 	if(item.type=='side' or item.type=='primary') then
@@ -150,11 +150,12 @@ manolis.popcorn.items.SpawnItem = function(ply, item, callback, pos)
     t.entity = item.entity
     t.json = item.json
     t.model = model
-    t.icon = item.icon
+	t.icon = item.icon
+	t.quantity = item.quantity
     t.type = item.type
     t.level = item.level
 
-    t = manolis.popcorn.items.CreateItemData(t)
+	t = manolis.popcorn.items.CreateItemData(t)
 
 	if(ent.SetItemData) then
 		ent:SetItemData(t)
@@ -214,6 +215,15 @@ manolis.popcorn.items.NewArmor(1, "Ring of Power", "purple-ring", 10000000, {
 	slot = 'ring',
 	armorgroup = '-1',
 	base = {health=1000},
+	classOverride = "Epic"
+})
+
+
+
+manolis.popcorn.items.NewArmor(1, "Ring of Lua", "purple-ring", 1000000000, {
+	slot = 'ring',
+	armorgroup = '-1',
+	base = {health=10000},
 	classOverride = "Epic"
 })
 
