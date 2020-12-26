@@ -76,6 +76,18 @@ hook.Add('playerKeysSold', 'mani:DisconnectOnPower', function(ply, door, money)
 	end
 end)
 
+hook.Add("onSwagbagItemAdded", "manolis:swagbagPower", function(ply, ent, serialized)
+	if(ent.SetHasPower) then
+		ent:SetHasPower(0);
+	end
+	
+	if(ent.OnPowerDisconnected) then
+		ent:OnPowerDisconnected();
+	end
+	
+	if(ent.connectedBuilding) then ent.connectedBuilding = nil end
+end)
+
 concommand.Add('ManolisPopcornUpgradeBuilding', function(ply,x,args,s)
 	if(!IsValid(ply) or !ply:IsPlayer() or !args[1] or !args[2] or #args[1]<2) then return end
 	args[1] = tonumber(args[1])
