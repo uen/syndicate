@@ -182,7 +182,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_kills ADD CONSTRAINT `item` UNIQUE (`item`, `gangid`);
+		ALTER TABLE manolis_popcorn_gang_kills ADD CONSTRAINT `item` UNIQUE (`victim`, `attacker`);
 	]])
 
 	
@@ -247,7 +247,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_territories_locations ADD CONSTRAINT `ukey` UNIQUE (`ukey`, `gangid`);
+		ALTER TABLE manolis_popcorn_gang_upgrades ADD CONSTRAINT `ukey` UNIQUE (`ukey`, `gangid`);
 	]])
 
 	
@@ -312,7 +312,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_inventory ADD CONSTRAINT `name` UNIQUE (`name`, `map`);
+		ALTER TABLE manolis_popcorn_positions ADD CONSTRAINT `name` UNIQUE (`name`, `map`);
 	]])
 
 
