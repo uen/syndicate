@@ -89,7 +89,7 @@ manolis.popcorn.gangs.GetGangUpgrades = function(gang, callback)
 end
 
 manolis.popcorn.gangs.SetUpgradeValue = function(gang, key, value, callback)
-	MySQLite.query("INSERT INTO manolis_popcorn_gang_upgrades(ukey, gangid, val) VALUES("..MySQLite.SQLStr(key)..","..MySQLite.SQLStr(gang)..", "..MySQLite.SQLStr(value)..") "..manolis.popcorn.data.duplicateUpdate("id").." UPDATE val = "..MySQLite.SQLStr(value), function(data)
+	MySQLite.query("INSERT INTO manolis_popcorn_gang_upgrades(ukey, gangid, val) VALUES("..MySQLite.SQLStr(key)..","..MySQLite.SQLStr(gang)..", "..MySQLite.SQLStr(value)..") "..manolis.popcorn.data.duplicateUpdate("id").." val = "..MySQLite.SQLStr(value), function(data)
 		if(callback) then
 			callback()
 		end
