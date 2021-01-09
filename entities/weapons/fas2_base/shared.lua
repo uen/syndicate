@@ -263,51 +263,7 @@ function SWEP:Initialize()
 		
 		--self:Deploy()
 	end
-
-
-    self.upgrades = {}
-    self.t = {}
 end
-
-if SERVER then
-    function SWEP:Upgrade(ply, id)
-        if(!ply.popcorn) then ply.popcorn = {} end
-        if(!ply.popcorn.weapons) then ply.popcorn.weapons = {} end
- 
-        manolis.popcorn.inventory.retrieveItem(ply,id,function(data)
-            if(!data) then return end
-            self.t = data
-            ply.popcorn.weapons[data.type] = data
-            local dcD = {}
-            if(data.json) then
-                if(data.json.upgrades) then
-
-                    for k,v in pairs(data.json.upgrades) do
-                        if(manolis.popcorn.upgrades.upgrades[data.json.type]) then
-                            if(manolis.popcorn.upgrades.upgrades[data.json.type][v.class]) then
-                                if(!dcD[v.class]) then 
-                                    dcD[v.class] = 0
-                                end 
-                                if(manolis.popcorn.upgrades.upgrades[data.json.type][v.class].levels) then
-                                    dcD[v.class] = dcD[v.class] + manolis.popcorn.upgrades.upgrades[data.json.type][v.class].levels[v.level]    
-                                end         
-                            end
-                        end
-                    end
-                end
-            end
-
-            self.upgrades = dcD
-            ply.popcorn.weapons[data.type].upgrades = dcD
-
-            if(self:GetOwner().upgrades and self:GetOwner().upgrades.accuracyboost) then
-       			self.Recoil = math.max(0,self.Recoil-(self.Recoil*(self:GetOwner().upgrades.accuracyboost/100)))
-    		end    
-        end)
-
-    end
-end
-
 
 local mag, CT, ang, cone, vel, ammo
 
