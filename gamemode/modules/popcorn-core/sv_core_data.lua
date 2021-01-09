@@ -23,7 +23,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_achievements ADD CONSTRAINT `uniq` UNIQUE (`aid`, `uid`)")
+		ALTER TABLE manolis_popcorn_achievements ADD CONSTRAINT `uniq` UNIQUE (`aid`, `uid`);
 	]])
 
 
@@ -43,7 +43,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_bank ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`)")
+		ALTER TABLE manolis_popcorn_bank ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`);
 	]])
 
 
@@ -66,7 +66,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_buildings_capturepoints ADD CONSTRAINT `bid` UNIQUE (`bid`, `map`)")
+		ALTER TABLE manolis_popcorn_buildings_capturepoints ADD CONSTRAINT `bid` UNIQUE (`bid`, `map`);
 	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_cash` (
@@ -83,7 +83,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_buildings_cash ADD CONSTRAINT `cash` UNIQUE (`bid`, `map`)")
+		ALTER TABLE manolis_popcorn_buildings_cash ADD CONSTRAINT `cash` UNIQUE (`bid`, `map`);
 	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_doors` (
@@ -94,7 +94,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_buildings_doors ADD CONSTRAINT `cash` UNIQUE (`bid`, `map`)")
+		ALTER TABLE manolis_popcorn_buildings_doors ADD CONSTRAINT `cash` UNIQUE (`bid`, `map`);
 	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_power` (
@@ -123,7 +123,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_equipment ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`)")
+		ALTER TABLE manolis_popcorn_equipment ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`);
 	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_gangs` (
@@ -182,7 +182,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_kills ADD CONSTRAINT `item` UNIQUE (`item`, `gangid`)")
+		ALTER TABLE manolis_popcorn_gang_kills ADD CONSTRAINT `item` UNIQUE (`item`, `gangid`);
 	]])
 
 	
@@ -199,7 +199,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_permissions ADD CONSTRAINT `item` UNIQUE (`item`, `gangid`)")
+		ALTER TABLE manolis_popcorn_gang_permissions ADD CONSTRAINT `item` UNIQUE (`item`, `gangid`);
 	]])
 		
 	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r1 int(11);]])
@@ -247,7 +247,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_territories_locations ADD CONSTRAINT `ukey` UNIQUE (`ukey`, `gangid`)")
+		ALTER TABLE manolis_popcorn_gang_territories_locations ADD CONSTRAINT `ukey` UNIQUE (`ukey`, `gangid`);
 	]])
 
 	
@@ -260,7 +260,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_garage ADD CONSTRAINT `name` UNIQUE (`name`, `uid`)")
+		ALTER TABLE manolis_popcorn_garage ADD CONSTRAINT `name` UNIQUE (`name`, `uid`);
 	]])
 
 
@@ -287,7 +287,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_inventory ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`, `page`)")
+		ALTER TABLE manolis_popcorn_inventory ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`, `page`);
 	]])
 
 
@@ -312,7 +312,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	);]])
 
 	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_inventory ADD CONSTRAINT `name` UNIQUE (`name`, `map`)")
+		ALTER TABLE manolis_popcorn_inventory ADD CONSTRAINT `name` UNIQUE (`name`, `map`);
 	]])
 
 
