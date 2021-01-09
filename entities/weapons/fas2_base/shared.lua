@@ -249,13 +249,7 @@ function SWEP:Initialize()
 			self.Nade.LifeTime = 0
 		end
 		
-		RunConsoleCommand("fas2_handrig_applynow")
-		
-		//CT = CurTime()
-		
-		//a = self.Anims.Draw_First
-		
-		
+		RunConsoleCommand("fas2_handrig_applynow")		
 		
 		self.upgrades = {}
 		self.t = {}
