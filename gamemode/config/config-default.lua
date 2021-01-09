@@ -71,6 +71,7 @@ manolis.popcorn.config.XPMult = 1 // XP Multiplier. 2 will make leveling twice a
 manolis.popcorn.config.propLimit = 30 // Base prop limit
 manolis.popcorn.config.maxTakedown = 9 // Max amount of takedown orbs that can be used on a single item
 manolis.popcorn.config.disableThirdPerson = false // Disable third person (c and right click to go third person)
+manolis.popcorn.config.ghostTimeModifier = function(time) return math.Clamp(time,20,300) end
 
 manolis.popcorn.config.donateUrl = "http://http://syndicate.manolis.io/doku.php?id=players" // Your donation URL ( https://www.gmodstore.com/scripts/view/3915/syndicate-rpg-credit-shop )
 manolis.popcorn.config.autoConnectPrinters = false // Automatically connect printers to sockets (realism)
