@@ -146,7 +146,7 @@ hook.Add('PlayerSpawn', 'manolis:popcorn:plySpawnInit', function(ply)
 				ply:SetRenderMode(RENDERMODE_TRANSALPHA)
 				ply:SetColor(Color(255,255,255,100))
 
-				local time = math.Clamp(10+(ply:GetLevel()*2.5),20,250)
+				local time = (10+(ply:GetLevel()*2.5))
 
 				if(ply:getDarkRPVar('gang')) then
 					local gang = ply:getDarkRPVar('gang')
@@ -164,7 +164,11 @@ hook.Add('PlayerSpawn', 'manolis:popcorn:plySpawnInit', function(ply)
 					end	
 				end
 
-				time = math.Clamp(time,20,300)
+				if(manolis.popcorn.config.ghostTimeModifier) then
+					time = manolis.popcorn.config.ghostTimeModifier(time)
+				else
+					time = math.Clamp(time,20,300)
+				end
 
 
 				timer.Simple(time, function()
