@@ -387,7 +387,7 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 
 	    if(self.t) then
 	        if(self.t.level) then
-	            damage = damage + (self.t.level / 6)
+	            damage = damage + (self.t.level / 4)
 	        end
 
 	        if(self.t.json and self.t.json.level) then
@@ -395,7 +395,7 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 	        end
 
 	        if(manolis.popcorn.levels.GetLevel(self:GetOwner())) then
-	            damage = damage + math.Round(manolis.popcorn.levels.GetLevel(self:GetOwner())/6)
+	            damage = damage + math.Round(manolis.popcorn.levels.GetLevel(self:GetOwner())/4)
 	        end
 	        
 	        if(self:GetOwner().upgrades and self:GetOwner().upgrades.basedamage) then
@@ -406,7 +406,15 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 	            if(self.upgrades.damage) then
 	                damage = damage + (damage*(self.upgrades.damage/100))
 	            end
-	        end
+			end
+			
+			if(manolis.popcorn.config.damageMultiplier) then
+				damage = damage * manolis.popcorn.config.damageMultiplier
+			end
+	
+			if(self.t.damageMultiplier) then
+				damage = damage * self.t.damageMultiplier
+			end
 	    end
 
 

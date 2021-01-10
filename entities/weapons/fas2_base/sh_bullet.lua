@@ -47,7 +47,7 @@ function SWEP:FireBullet()
 		local dmg = bul.Damage
 	    if(self.t) then
 	        if(self.t.level) then
-	            dmg = dmg + (self.t.level / 6)
+	            dmg = dmg + (self.t.level / 4)
 	        end
 
 	        if(self.t.json and self.t.json.level) then
@@ -55,7 +55,7 @@ function SWEP:FireBullet()
 	        end
 
 	        if(manolis.popcorn.levels.GetLevel(self:GetOwner())) then
-	            dmg = dmg + math.Round(manolis.popcorn.levels.GetLevel(self:GetOwner())/6)
+	            dmg = dmg + math.Round(manolis.popcorn.levels.GetLevel(self:GetOwner())/4)
 	        end
 	        
 	        if(self:GetOwner().upgrades and self:GetOwner().upgrades.basedamage) then
@@ -66,7 +66,15 @@ function SWEP:FireBullet()
 	            if(self.upgrades.damage) then
 	                dmg = dmg + (dmg*(self.upgrades.damage/100))
 	            end
-	        end
+			end
+			
+			if(manolis.popcorn.config.damageMultiplier) then
+				dmg = dmg * manolis.popcorn.config.damageMultiplier
+			end
+	
+			if(self.t.damageMultiplier) then
+				dmg = dmg * self.t.damageMultiplier
+			end
 	    end
 	   	bul.Damage = dmg
 	   	self.Damage = dmg

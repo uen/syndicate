@@ -3,7 +3,7 @@ if(!manolis.popcorn) then manolis.popcorn = {} end
 if(!manolis.popcorn.items) then manolis.popcorn.items = {} end
 if(!manolis.popcorn.items.items) then manolis.popcorn.items.items = {} end
 
-manolis.popcorn.items.NewWeapon = function(level, type_, name, ent, icon, price, model)
+manolis.popcorn.items.NewWeapon = function(level, type_, name, ent, icon, price, model, damageMultiplier)
 	local weapon = {}
 	weapon.level = level
 	weapon.type = type_
@@ -12,6 +12,7 @@ manolis.popcorn.items.NewWeapon = function(level, type_, name, ent, icon, price,
 	weapon.price = price
 	weapon.icon = icon
 	weapon.model = model 
+	weapon.damageMultiplier = damageMultiplier or 1
 	manolis.popcorn.items.NewItem(weapon)
 end
 
