@@ -11,8 +11,10 @@ manolis.popcorn.items.NewWeapon = function(level, type_, name, ent, icon, price,
 	weapon.entity = ent
 	weapon.price = price
 	weapon.icon = icon
-	weapon.model = model 
-	weapon.damageMultiplier = damageMultiplier or 1
+	weapon.model = model
+	weapon.meta = {
+		damageMultiplier = damageMultiplier or 1
+	}
 	manolis.popcorn.items.NewItem(weapon)
 end
 
@@ -38,7 +40,8 @@ manolis.popcorn.items.NewItem = function(data)
 		type = data.type or 'item',
 		level = data.level or 1,
 		model = data.model or "",
-		json = data.json and util.TableToJSON(data.json) or '{}'
+		json = data.json and util.TableToJSON(data.json) or '{}',
+		meta = data.meta or {}
 	}
 
 	table.insert(manolis.popcorn.items.items, t)

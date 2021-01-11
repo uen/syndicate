@@ -9,7 +9,7 @@ local giveEquippedItem = function(ply,item)
 			local ent = ply:Give(a.entity, true)
 			ply:SelectWeapon(a.entity)
 			if(ent.Upgrade) then
-				ent:Upgrade(ply, item.id)
+				ent:Upgrade(ply, item.id, a)
 			end
 		elseif(a.type=='armor') then
 			if(!ply.upgrades) then ply.upgrades = {} end

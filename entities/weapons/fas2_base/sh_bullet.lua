@@ -72,8 +72,8 @@ function SWEP:FireBullet()
 				dmg = dmg * manolis.popcorn.config.damageMultiplier
 			end
 	
-			if(self.t.damageMultiplier) then
-				dmg = dmg * self.t.damageMultiplier
+			if(self.item.meta and self.item.meta.damageMultiplier) then
+				damage = damage * self.item.meta.damageMultiplier
 			end
 	    end
 	   	bul.Damage = dmg

@@ -149,12 +149,13 @@ function SWEP:Initialize()
 
 		self.upgrades = {}
 		self.t = {}
+		self.item = {}
 	   
 end
 
 
 if SERVER then
-    function SWEP:Upgrade(ply, id)
+    function SWEP:Upgrade(ply, id, item)
         if(!ply.popcorn) then ply.popcorn = {} end
         if(!ply.popcorn.weapons) then ply.popcorn.weapons = {} end
 
@@ -163,9 +164,8 @@ if SERVER then
 
 
             if(!data) then return end
-  
-       
-            self.t = data
+			self.t = data
+			self.item = item
             ply.popcorn.weapons[data.type] = data
             local dcD = {}
             if(data.json) then
@@ -412,8 +412,8 @@ function SWEP:ShootBullet(damage, recoil, num_bullets, aimcone)
 				damage = damage * manolis.popcorn.config.damageMultiplier
 			end
 	
-			if(self.t.damageMultiplier) then
-				damage = damage * self.t.damageMultiplier
+			if(self.item.meta and self.item.meta.damageMultiplier) then
+				damage = damage * self.item.meta.damageMultiplier
 			end
 	    end
 

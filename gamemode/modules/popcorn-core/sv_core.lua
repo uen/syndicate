@@ -241,7 +241,7 @@ hook.Add('PlayerLoadout', 'manolis:popcorn:loadout', function(ply)
 				local ent = ply:Give(a.entity, true)
 				ply:SelectWeapon(a.entity)
 				if(ent.Upgrade) then
-					ent:Upgrade(ply, v.id)
+					ent:Upgrade(ply, v.id, a)
 				end
 			end
 		end

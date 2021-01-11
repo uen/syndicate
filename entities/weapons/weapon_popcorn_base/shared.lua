@@ -167,13 +167,14 @@ function SWEP:Initialize()
 	self.data[self.mode].Init(self)
 
     self.upgrades = {}
-    self.t = {}
+	self.t = {}
+	self.item = {}
 end
 
 
 
 if SERVER then
-    function SWEP:Upgrade(ply, id)
+    function SWEP:Upgrade(ply, id, item)
         if(!ply.popcorn) then ply.popcorn = {} end
         if(!ply.popcorn.weapons) then ply.popcorn.weapons = {} end
  
@@ -565,8 +566,8 @@ function SWEP:CSShootBullet(dmg, recoil, numbul, cone)
 			dmg = dmg * manolis.popcorn.config.damageMultiplier
 		end
 
-		if(self.t.damageMultiplier) then
-			dmg = dmg * self.t.damageMultiplier
+		if(self.item.meta and self.item.meta.damageMultiplier) then
+			damage = damage * self.item.meta.damageMultiplier
 		end
     end
 
