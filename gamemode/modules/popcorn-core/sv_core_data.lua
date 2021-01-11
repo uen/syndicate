@@ -19,14 +19,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `aid` varchar(50) NOT NULL,
 	  `progress` double NOT NULL,
-	  `uid` varchar(50) NOT NULL
+	  `uid` varchar(50) NOT NULL,
+	  UNIQUE KEY `uniq` (`aid`,`uid`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_achievements ADD CONSTRAINT `uniq` UNIQUE (`aid`, `uid`);
-	]])
-
-
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_bank` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -39,13 +34,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `json` text NOT NULL,
 	  `icon` varchar(10000) NOT NULL,
 	  `level` int(10) NOT NULL,
-	  `quantity` int(10) NOT NULL
+	  `quantity` int(10) NOT NULL,
+	   UNIQUE KEY `uid` (`uid`,`slot`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_bank ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`);
-	]])
-
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -62,12 +53,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `pz` double NOT NULL,
 	  `a1` double NOT NULL,
 	  `a2` double NOT NULL,
-	  `a3` double NOT NULL
+	  `a3` double NOT NULL,
+	  UNIQUE KEY `bid` (`bid`,`map`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_buildings_capturepoints ADD CONSTRAINT `bid` UNIQUE (`bid`, `map`);
-	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_cash` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -78,24 +66,17 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `pz` double NOT NULL,
 	  `a1` double NOT NULL,
 	  `a2` double NOT NULL,
-	  `a3` double NOT NULL
+	  `a3` double NOT NULL,
+	  UNIQUE KEY `cash` (`bid`,`map`)
 	);]])
-
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_buildings_cash ADD CONSTRAINT `cash` UNIQUE (`bid`, `map`);
-	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_doors` (
 	  `id` int(11) NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `map` varchar(255) NOT NULL,
 	  `main` int(11) NOT NULL,
-	  `bid` int(11) NOT NULL
+	  `bid` int(11) NOT NULL,
+	  UNIQUE KEY `cash` (`bid`,`map`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_buildings_doors ADD CONSTRAINT `cash` UNIQUE (`bid`, `map`);
-	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_power` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -118,13 +99,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `uid` bigint(20) NOT NULL,
 	  `slot` varchar(255) NOT NULL,
-	  `item` int(11) NOT NULL
+	  `item` int(11) NOT NULL,
+	  UNIQUE KEY `uid` (`uid`,`slot`)
 	);]])
-
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_equipment ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`);
-	]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_gangs` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -178,12 +155,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `attacker` int(11) NOT NULL,
 	  `victim` int(11) NOT NULL,
-	  `amount` int(11) NOT NULL
+	  `amount` int(11) NOT NULL,
+	  UNIQUE KEY `item` (`victim`,`attacker`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_kills ADD CONSTRAINT `item` UNIQUE (`victim`, `attacker`);
-	]])
 
 	
 
@@ -195,12 +169,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `r3` int(11),
 	  `r4` int(11),
 	  `r5` int(11),
-	  `gangid` int(11) NOT NULL
+	  `gangid` int(11) NOT NULL,
+	  UNIQUE KEY `item` (`item`, `gangid`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_permissions ADD CONSTRAINT `item` UNIQUE (`item`, `gangid`);
-	]])
 		
 	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r1 int(11);]])
 	MySQLite.query([[ALTER TABLE `manolis_popcorn_gang_permissions` MODIFY r2 int(11);]])
@@ -215,7 +186,8 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `attacker` int(11) NOT NULL,
 	  `victim` int(11) NOT NULL,
-	  `amount` int(11) NOT NULL
+	  `amount` int(11) NOT NULL,
+	  UNIQUE KEY `victim` (`victim`,`attacker`)
 	);]])
 
 
@@ -236,33 +208,21 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `tid` int(11) NOT NULL
 	);]])
 
-
-	MySQLite.query([[ALTER TABLE  `manolis_popcorn_gang_territories_locations` CHANGE  `map`  `map` VARCHAR( 255 ) NOT NULL ;]])
-
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_gang_upgrades` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `ukey` varchar(255) NOT NULL,
 	  `gangid` int(11) NOT NULL,
-	  `val` int(11) NOT NULL
-	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_gang_upgrades ADD CONSTRAINT `ukey` UNIQUE (`ukey`, `gangid`);
-	]])
-
-	
+	  `val` int(11) NOT NULL,
+	  UNIQUE KEY `ukey` (`ukey`,`gangid`)
+	);]])	
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_garage` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
 	  `uid` varchar(50) NOT NULL,
 	  `name` varchar(50) NOT NULL,
-	  `json` text NOT NULL
+	  `json` text NOT NULL,
+	  UNIQUE KEY `name` (`name`,`uid`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_garage ADD CONSTRAINT `name` UNIQUE (`name`, `uid`);
-	]])
-
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_gifts` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -283,21 +243,15 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `page` varchar(255) NOT NULL,
 	  `icon` varchar(10000) NOT NULL,
 	  `level` int(10) NOT NULL,
-	  `quantity` int(10) NOT NULL
+	  `quantity` int(10) NOT NULL,
+	  UNIQUE KEY `uid` (`uid`,`slot`,`page`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_inventory ADD CONSTRAINT `uid` UNIQUE (`uid`, `slot`, `page`);
-	]])
-
-
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_levels` (
 	  `uid` bigint(20) NOT NULL,
 	  `level` int(11) NOT NULL,
 	  `xp` int(11) NOT NULL
 	);]])
-
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_positions` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -308,13 +262,9 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `z` double NOT NULL,
 	  `ax` double NOT NULL,
 	  `ay` double NOT NULL,
-	  `az` double NOT NULL
+	  `az` double NOT NULL,
+	  UNIQUE KEY `name` (`name`,`map`)
 	);]])
-
-	MySQLite.query([[
-		ALTER TABLE manolis_popcorn_positions ADD CONSTRAINT `name` UNIQUE (`name`, `map`);
-	]])
-
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_quickbuy` (
 	  `id` integer NOT NULL PRIMARY KEY ]]..AUTOINCREMENT..[[,
@@ -323,6 +273,4 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `cmd` varchar(255) NOT NULL,
 	  `mdl` varchar(255) NOT NULL
 	);]])
-
-
 end)
