@@ -250,11 +250,11 @@ function SWEP:Initialize()
 		end
 		
 		RunConsoleCommand("fas2_handrig_applynow")		
-		
-		self.upgrades = {}
-		self.t = {}
-		self.item = {}
 	end
+
+	self.upgrades = {}
+	self.t = {}
+	self.item = {}
 end
 
 if SERVER then
