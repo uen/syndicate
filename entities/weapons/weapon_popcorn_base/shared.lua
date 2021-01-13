@@ -174,10 +174,11 @@ end
 
 
 if SERVER then
-    function SWEP:Upgrade(ply, id, item)
+	function SWEP:Upgrade(ply, id, item)
         if(!ply.popcorn) then ply.popcorn = {} end
         if(!ply.popcorn.weapons) then ply.popcorn.weapons = {} end
- 
+
+		self.item = item
         manolis.popcorn.inventory.retrieveItem(ply,id,function(data)
             if(!data) then return end
             self.t = data
@@ -567,7 +568,7 @@ function SWEP:CSShootBullet(dmg, recoil, numbul, cone)
 		end
 
 		if(self.item.meta and self.item.meta.damageMultiplier) then
-			damage = damage * self.item.meta.damageMultiplier
+			dmg = dmg * self.item.meta.damageMultiplier
 		end
     end
 

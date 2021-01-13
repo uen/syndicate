@@ -101,61 +101,61 @@ SWEP.VElements = {}
 SWEP.WElements = {}
  
 function SWEP:Initialize()
-		self.Reloadaftershoot = 0                               -- Can't reload when firing
-		self:SetHoldType(self.HoldType)
-		self.OrigCrossHair = self.DrawCrosshair
-		if SERVER and self.Owner:IsNPC() then
-				self:SetNPCMinBurst(3)                 
-				self:SetNPCMaxBurst(10)                 -- None of this really matters but you need it here anyway
-				self:SetNPCFireRate(1/(self.Primary.RPM/60))   
-				-- //self:SetCurrentWeaponProficiency( WEAPON_PROFICIENCY_VERY_GOOD )
-		end
-	   
-		if CLIENT then
-	   
-				-- // Create a new table for every weapon instance
-				self.VElements = table.FullCopy( self.VElements )
-				self.WElements = table.FullCopy( self.WElements )
-				self.ViewModelBoneMods = table.FullCopy( self.ViewModelBoneMods )
- 
-				self:CreateModels(self.VElements) -- create viewmodels
-				self:CreateModels(self.WElements) -- create worldmodels
-			   
-				-- // init view model bone build function
-				if IsValid(self.Owner) and self.Owner:IsPlayer() then
-				if self.Owner:Alive() then
-						local vm = self.Owner:GetViewModel()
-						if IsValid(vm) then
-								self:ResetBonePositions(vm)
-								-- // Init viewmodel visibility
-								if (self.ShowViewModel == nil or self.ShowViewModel) then
-										vm:SetColor(Color(255,255,255,255))
-								else
-										-- // however for some reason the view model resets to render mode 0 every frame so we just apply a debug material to prevent it from drawing
-										vm:SetMaterial("Debug/hsv")                    
-								end
-						end
-					   
-				end
-				end
-			   
-		end
-	   
-		if CLIENT then
-				local oldpath = "vgui/hud/name" -- the path goes here
-				local newpath = string.gsub(oldpath, "name", self.Gun)
-				self.WepSelectIcon = surface.GetTextureID(newpath)
-		end
+	self.upgrades = {}
+	self.t = {}
+	self.item = {}
+	
+	self.Reloadaftershoot = 0                               -- Can't reload when firing
+	self:SetHoldType(self.HoldType)
+	self.OrigCrossHair = self.DrawCrosshair
+	if SERVER and self.Owner:IsNPC() then
+			self:SetNPCMinBurst(3)                 
+			self:SetNPCMaxBurst(10)                 -- None of this really matters but you need it here anyway
+			self:SetNPCFireRate(1/(self.Primary.RPM/60))   
+			-- //self:SetCurrentWeaponProficiency( WEAPON_PROFICIENCY_VERY_GOOD )
+	end
+	
+	if CLIENT then
+	
+			-- // Create a new table for every weapon instance
+			self.VElements = table.FullCopy( self.VElements )
+			self.WElements = table.FullCopy( self.WElements )
+			self.ViewModelBoneMods = table.FullCopy( self.ViewModelBoneMods )
 
-		self.upgrades = {}
-		self.t = {}
-		self.item = {}
-	   
+			self:CreateModels(self.VElements) -- create viewmodels
+			self:CreateModels(self.WElements) -- create worldmodels
+			
+			-- // init view model bone build function
+			if IsValid(self.Owner) and self.Owner:IsPlayer() then
+			if self.Owner:Alive() then
+					local vm = self.Owner:GetViewModel()
+					if IsValid(vm) then
+							self:ResetBonePositions(vm)
+							-- // Init viewmodel visibility
+							if (self.ShowViewModel == nil or self.ShowViewModel) then
+									vm:SetColor(Color(255,255,255,255))
+							else
+									-- // however for some reason the view model resets to render mode 0 every frame so we just apply a debug material to prevent it from drawing
+									vm:SetMaterial("Debug/hsv")                    
+							end
+					end
+					
+			end
+			end
+			
+	end
+	
+	if CLIENT then
+			local oldpath = "vgui/hud/name" -- the path goes here
+			local newpath = string.gsub(oldpath, "name", self.Gun)
+			self.WepSelectIcon = surface.GetTextureID(newpath)
+	end	   
 end
 
 
 if SERVER then
-    function SWEP:Upgrade(ply, id, item)
+	function SWEP:Upgrade(ply, id, item)
+		self.item = item
         if(!ply.popcorn) then ply.popcorn = {} end
         if(!ply.popcorn.weapons) then ply.popcorn.weapons = {} end
 
@@ -165,7 +165,6 @@ if SERVER then
 
             if(!data) then return end
 			self.t = data
-			self.item = item
             ply.popcorn.weapons[data.type] = data
             local dcD = {}
             if(data.json) then

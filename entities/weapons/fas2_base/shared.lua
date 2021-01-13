@@ -188,6 +188,10 @@ local GetAimVector = reg.Player.GetAimVector
 
 function SWEP:Initialize()
 	self:SetWeaponHoldType(self.HoldType)
+
+	self.upgrades = {}
+	self.t = {}
+	self.item = {}
 	
 	self.CurCone = self.HipCone
 	self.Class = self:GetClass()
@@ -251,21 +255,18 @@ function SWEP:Initialize()
 		
 		RunConsoleCommand("fas2_handrig_applynow")		
 	end
-
-	self.upgrades = {}
-	self.t = {}
-	self.item = {}
 end
 
 if SERVER then
 	function SWEP:Upgrade(ply, id, item)
+		self.item = item
+
 		if(!ply.popcorn) then ply.popcorn = {} end
 		if(!ply.popcorn.weapons) then ply.popcorn.weapons = {} end
-		
+
 		manolis.popcorn.inventory.retrieveItem(ply,id,function(data)
 			if(!data) then return end
 			self.t = data
-			self.item = item
 			ply.popcorn.weapons[data.type] = data
 			local dcD = {}
 			if(data.json) then

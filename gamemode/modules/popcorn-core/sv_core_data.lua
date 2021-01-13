@@ -11,7 +11,6 @@ manolis.popcorn.data.duplicateUpdate = function(key)
 end
 
 hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
-	print("db initialized")
 	local AUTOINCREMENT = MySQLite.isMySQL() and "AUTO_INCREMENT" or "AUTOINCREMENT"
 
 
