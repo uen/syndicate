@@ -15,6 +15,8 @@ end
 
 local addItem = function(ply,item,callback)
 	addingItem = true
+	local steamId = ply:SteamID64()
+	
 	manolis.popcorn.inventory.getFreeSlot(ply, function(page, slot)
 		if(!page or !slot) then
 			callback(false)
@@ -32,10 +34,10 @@ local addItem = function(ply,item,callback)
 		end
 
 		if((!item.checked) and (item.type == "material" or item.type == "reinstone")) then
-			MySQLite.query("SELECT id,quantity,page,slot FROM manolis_popcorn_inventory WHERE uid = "..MySQLite.SQLStr(ply:SteamID64()).." AND type = "..MySQLite.SQLStr(item.type).." AND name = "..MySQLite.SQLStr(item.name).." AND quantity<99", function(stackable)
+			MySQLite.query("SELECT id,quantity,page,slot FROM manolis_popcorn_inventory WHERE uid = "..MySQLite.SQLStr(steamId).." AND type = "..MySQLite.SQLStr(item.type).." AND name = "..MySQLite.SQLStr(item.name).." AND quantity<99", function(stackable)
 				if(stackable and stackable[1]) then
 					stackable = stackable[1]
-					MySQLite.query("UPDATE manolis_popcorn_inventory SET quantity = quantity + 1 WHERE uid = "..MySQLite.SQLStr(ply:SteamID64()).." AND id = "..MySQLite.SQLStr(stackable.id), function()
+					MySQLite.query("UPDATE manolis_popcorn_inventory SET quantity = quantity + 1 WHERE uid = "..MySQLite.SQLStr(steamId).." AND id = "..MySQLite.SQLStr(stackable.id), function()
 						if(callback) then
 							callback({page=stackable.page,slot=stackable.slot})
 						end

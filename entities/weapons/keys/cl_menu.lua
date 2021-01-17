@@ -148,6 +148,8 @@ local function openMenu(setDoorOwnerAccess, doorSettingsAccess)
 
             local powerUpgradeButtons = {}
             local refreshPower = function(d)
+                if(!upgradeFrame) return
+                
                 for k,v in pairs(powerUpgradeButtons) do
                     v:Remove()
                 end
