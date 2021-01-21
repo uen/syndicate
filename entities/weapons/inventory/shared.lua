@@ -68,7 +68,13 @@ function SWEP:PrimaryAttack()
     local data = ent.itemInventoryData
 
 
-    if(ent.pickingUp or !data) then
+    if(ent.pickingUp) then
+        DarkRP.notify(self:GetOwner(),1,4,"Someone else is already picking this item up")
+        return false
+    end   
+    
+    if(!data) then
+        DarkRP.notify(self:GetOwner(),1,4,"You cannot add this to your inventory")
         return false
     end   
 
@@ -96,6 +102,7 @@ function SWEP:PrimaryAttack()
             manolis.popcorn.inventory.addWorldItem(self:GetOwner(), ent:GetItemData(), function(success)
                 ent.pickingUp = false
                 if(!success) then
+                    DarkRP.notify(self:GetOwner(),1,4,"An error occurred adding the item to your inventory")
                     return
                 else
                     ent:Remove()

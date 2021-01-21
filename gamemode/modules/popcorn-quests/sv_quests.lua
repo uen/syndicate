@@ -83,6 +83,8 @@ concommand.Add("ManolisPopcornAcceptQuest",function(ply,cmd,args)
 				DarkRP.notify(ply,1,4,'You cannot afford this quest')
 				return 
 			end
+				
+			ply:addMoney(-cost)
 
 			quest.reward = cost
 

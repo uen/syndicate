@@ -126,10 +126,11 @@ net.Receive("ManolisPopcornRefineUpgrades", function(len,ply)
 	DarkRP.notify(ply,0,4,DarkRP.getPhrase('refining'))
 
 	local items = net.ReadTable()
-	if(!items or (#items<=0)) then 
+	if(!items or (#items<=0)) then
 		DarkRP.notify(ply,0,4,DarkRP.getPhrase('refine_fail_items'))
-		return 
-	end	
+		ply.isCrafting = false
+		return
+	end
 
 	if(#items!=3) then
 		failCraft(ply,DarkRP.getPhrase('refine_fail_upg'))
@@ -145,7 +146,7 @@ net.Receive("ManolisPopcornRefineUpgrades", function(len,ply)
 	for k,v in pairs(dupeTest) do
 		c = c+1
 	end
-	
+
 	if(c!=#items) then
 		failCraft(ply,DarkRP.getPhrase('dupe_item'))
 		return
@@ -176,7 +177,7 @@ net.Receive("ManolisPopcornRefineUpgrades", function(len,ply)
 				v2 = idItems[vx]
 				if(!v2) then
 					failCraft(ply,DarkRP.getPhrase('refine_fail_items'))
-					return		
+					return
 				end
 				if(!v2.json or !v2.json.type or !v2.json.level) then
 					failCraft(ply,DarkRP.getPhrase('refine_fail_upg'))
@@ -187,7 +188,7 @@ net.Receive("ManolisPopcornRefineUpgrades", function(len,ply)
 					failCraft(ply,DarkRP.getPhrase('refine_fail_upg'))
 					return
 				end
-				
+
 				if(v2.json.type!=idItems[v].json.type) then
 					failCraft(ply,DarkRP.getPhrase('refine_fail_upg'))
 					return
@@ -237,9 +238,9 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 	if(!bp) then return false end
 	local items = net.ReadTable()
 
-	if(!items or (#items<=0)) then 
+	if(!items or (#items<=0)) then
 		failCraft(ply, DarkRP.getPhrase('craft_fail'))
-		return 
+		return
 	end
 
 	local dupeTest = {}
@@ -264,9 +265,9 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 			idItems[v.id] = v
 		end
 
-		if(!idItems[bp]) then 
+		if(!idItems[bp]) then
 			failCraft(ply, DarkRP.getPhrase('craft_fail_bp'))
-			return 
+			return
 		end
 		if(idItems[bp].type!='blueprint') then
 			failCraft(ply,DarkRP.getPhrase('craft_fail_bp'))
@@ -329,7 +330,7 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 					matsWeNeed[string.sub(v.name,1,-9)] = matsWeNeed[string.sub(v.name,1,-9)]-v.quantity
 				end
 				if(string.sub(v.name,1,-(#DarkRP.getPhrase('crystal_')+2))==DarkRP.getPhrase('carbon_giga')) then
-					if(!hasGiga) then 
+					if(!hasGiga) then
 						hasGiga = k
 						v.changeQuantity = v.quantity-1
 					end
@@ -356,7 +357,7 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 						end
 						manolis.popcorn.inventory.addItem(ply,i,function()
 							DarkRP.notify(ply,0,4,DarkRP.getPhrase('craft_success'))
-							
+
 							ply:AddAchievementProgress('crafter', 1)
 							ply:AddAchievementProgress('craft2', 1)
 							ply:RefreshInventory()
@@ -384,7 +385,7 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 				if(blueprintData.type=='car') then
 					manolis.popcorn.garage.HasCar(ply,blueprintData.name, function(l)
 						if(!l) then
-							
+
 							ply:RefreshInventory()
 							manolis.popcorn.garage.AddCar(ply,blueprintData.name, function(a)
 								DarkRP.notify(ply,0,4,DarkRP.getPhrase('craft_success'))
@@ -426,7 +427,7 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 							ply:AddAchievementProgress('craft2', 1)
 							ply:RefreshInventory()
 							ply.isCrafting = false
-						end)						
+						end)
 					end
 				end
 
@@ -449,9 +450,9 @@ net.Receive("ManolisPopcornCraftItem", function(len,ply)
 							ply:AddAchievementProgress('craft2', 1)
 							ply:RefreshInventory()
 							ply.isCrafting = false
-						end)						
+						end)
 					end
-				end 
+				end
 			end
 		end
 

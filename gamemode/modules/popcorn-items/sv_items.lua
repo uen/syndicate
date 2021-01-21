@@ -89,7 +89,7 @@ end
 manolis.popcorn.items.GetModel = function(item)
 	if(item.type=='upgrade') then return "models/maxofs2d/hover_rings.mdl" end
 	if(item.type=='blueprint') then return "models/lecoffee/alchemy/blueprint.mdl" end
-	if(item.type=='material') then return "models/props_c17/FurnitureCouch002a.mdl" end
+	if(item.type=='material') then return "models/lecoffee/alchemy/metalbar.mdl" end
 	if(item.type=='shipment') then return "models/Items/item_item_crate.mdl" end
 	if(item.json and item.json.model) then return item.json.model end
 	if(item.type=='side' or item.type=='primary') then
