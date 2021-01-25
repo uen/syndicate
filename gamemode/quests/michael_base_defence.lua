@@ -45,6 +45,8 @@ end
 
 quest.Fail = function(self,ply)
 	ply.quest = false
+	manolis.popcorn.alerts.RemoveAlert(ply,self.uiq..ply:UserID())
+	manolis.popcorn.quests.CompleteQuest(ply,true)
 end
 
 quest.Next = function(self,ply)
