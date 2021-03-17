@@ -74,7 +74,7 @@ hook.Add("DarkRPDBInitialized", "Manolis:Popcorn:InitDatabaseTables", function()
 	  `map` varchar(255) NOT NULL,
 	  `main` int(11) NOT NULL,
 	  `bid` int(11) NOT NULL,
-	  UNIQUE KEY `cash` (`bid`,`map`)
+	  UNIQUE KEY `cash` (`id`,`map`)
 	);]])
 
 	MySQLite.query([[CREATE TABLE IF NOT EXISTS `manolis_popcorn_buildings_power` (
