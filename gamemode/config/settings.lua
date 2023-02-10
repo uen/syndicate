@@ -6,6 +6,9 @@ Set to true or false.
 
 -- voice3D - Enable/disable 3DVoice is enabled.
 GM.Config.voice3D                       = true
+-- Currency seperator
+GAMEMODE.Config.currencyThousandSeparator = ","
+
 -- AdminsCopWeapons - Enable/disable admins spawning with cop weapons.
 GM.Config.AdminsCopWeapons              = true
 -- adminBypassJobCustomCheck - Enable/disable whether an admin can force set a job with whenever customCheck returns false.
