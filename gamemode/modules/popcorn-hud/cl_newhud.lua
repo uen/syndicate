@@ -712,7 +712,7 @@ local function DisplayGangNotify(msg)
 end
 usermessage.Hook("_GangNotify", DisplayGangNotify)
 
-hook.Add("HUDShouldDraw", function()
+hook.Add("HUDShouldDraw", "manolis:DrawHudDisable", function()
 	return false
 end)
 
