@@ -712,9 +712,6 @@ local function DisplayGangNotify(msg)
 end
 usermessage.Hook("_GangNotify", DisplayGangNotify)
 
-hook.Add("HUDShouldDraw", "manolis:DrawHudDisable", function()
-	return false
-end)
 
 net.Receive("ManolisPopcornGangStartCapturing",		 function()
     local timeLeft = manolis.popcorn.config.capPoleTime
