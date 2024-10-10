@@ -518,3 +518,7 @@ GM.Config.pocketitems                   = 0
 GAMEMODE.Config.restrictdrop			= true
 GM.Config.removeondisconnect 			= false
 GM.Config.propertytax                   = true
+
+-- Settings DarkRP added years later
+GM.Config.currencyThousandSeparator     = ","
+GM.Config.EntitySpamTime                = 0.5
